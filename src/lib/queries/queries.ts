@@ -156,7 +156,6 @@ export const useGetPosts = () => {
       if (lastPage && lastPage?.documents.length) {
         return allPages.length + 1;
       }
-
       // Use the $id of the last document as the cursor.
       const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;
       return lastId;
@@ -166,7 +165,7 @@ export const useGetPosts = () => {
 
 export const useSearchProfile = (searchTerm: string) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.SEARCH_MISSING_PROFILES],
+    queryKey: [QUERY_KEYS.SEARCH_MISSING_PROFILES, searchTerm],
     queryFn: () => searchProfile(searchTerm),
     enabled: !!searchTerm,
   });
