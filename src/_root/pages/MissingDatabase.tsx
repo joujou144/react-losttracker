@@ -3,11 +3,11 @@ import {
   LoadingSpinner,
   MissingProfileCard,
 } from "@/components/custom";
+import SearchResults from "@/components/custom/SearchResults";
 import { Input } from "@/components/ui/input";
+import useDebounce from "@/hooks/useDebounce";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-// import useDebounce from "@/hooks/useDebounce";
-import { useGetPosts } from "@/lib/queries/queries";
-// import { Models } from "appwrite";
+import { useGetPosts, useSearchProfile } from "@/lib/queries/queries";
 import { useState } from "react";
 import { LuListFilter, LuSearch } from "react-icons/lu";
 
@@ -23,8 +23,14 @@ const MissingDatabase = () => {
   } = useGetPosts();
 
   const loadMoreRef = useInfiniteScroll(fetchNextPage);
-  // const debouncedValue = useDebounce(searchValue, 500);
-  // const { data: searchPost } = useSearchProfile(debouncedValue);
+  const debouncedValue = useDebounce(searchValue, 500);
+  const { data: searchPost } = useSearchProfile(debouncedValue);
+  if (!posts || isLoading)
+    return (
+      <div className="mt-20">
+        <LoadingSpinner />
+      </div>
+    );
   const showSearchResults = searchValue !== "";
   const showProfiles =
     !showSearchResults && posts.every((item) => item.documents.length === 0);
@@ -54,7 +60,22 @@ const MissingDatabase = () => {
             Please cross-check your inputs and try again.
           </p>
         )}
-        {isLoading ? (
+        {showSearchResults ? (
+          <SearchResults />
+        ) : showProfiles && !isFetchingNextPage && !hasNextPage ? (
+          <p className="text-center">There is no more data to load</p>
+        ) : (
+          <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) =>
+              post.documents.map((profile) => (
+                <li key={profile.$id} className="w-full">
+                  <MissingProfileCard post={profile} />
+                </li>
+              ))
+            )}
+          </ul>
+        )}
+        {/* {isLoading ? (
           <div className="mt-20">
             <LoadingSpinner />
           </div>
@@ -68,14 +89,11 @@ const MissingDatabase = () => {
               ))
             )}
           </ul>
-        )}
+        )} */}
 
         {isError && (
           <div ref={loadMoreRef}>
             {isFetchingNextPage && <LoadingSpinner />}
-            {!isFetchingNextPage && !hasNextPage && (
-              <p className="text-center">There is no more data to load</p>
-            )}
           </div>
         )}
       </div>
