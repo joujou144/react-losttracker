@@ -69,7 +69,7 @@ const Signup = () => {
 
   return (
     <>
-      <h2 className="h2-bold text-warm-gray">Create an account</h2>
+      <h2 className="h2-bold text-primary-600">Create an account</h2>
 
       <div className="py-6 flex items-center gap-1.5 text-sm">
         <p className="text-gray-20">Already have an account?</p>
@@ -151,7 +151,7 @@ const Signup = () => {
 export const TermsAndConditions = () => {
   return (
     <div className="flex flex-col mt-6 text-center border-t-[1px] border-gray-50">
-      <p className="pt-4 text-xxs lg:text-xs text-gray-20">
+      <p className="pt-4 text-xxs lg:text-[12px] text-gray-20">
         By joining, you agree to our{" "}
         <Link to="/login">
           Terms of Service

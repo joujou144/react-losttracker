@@ -59,7 +59,7 @@ const Login = () => {
 
   return (
     <>
-      <h2 className="h2-bold text-warm-gray">Welcome back</h2>
+      <h2 className="h2-bold text-primary-600">Welcome back</h2>
       <div className="pt-6 pb-2 flex items-center gap-1.5 text-sm">
         <p className="text-gray-20">Don't have an account?</p>
 

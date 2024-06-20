@@ -10,7 +10,7 @@ const AuthLayout = () => {
       ) : (
         <section className="flex items-center justify-between overflow-x-hidden overflow-y-scroll">
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center h-svh lg:h-screen">
-            <div className="p-6 w-[420px] lg:w-[480px]">
+            <div className="p-6 w-[435px] lg:w-[490px]">
               <img
                 src="/assets/Logo-light-losttracker.svg"
                 alt="losttracker-logo"
