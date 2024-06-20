@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 type MissingProfileProps = {
   post: Models.Document;
-  userId: string;
 };
 
 type BadgeProps = {

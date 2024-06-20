@@ -19,7 +19,9 @@ const SavedProfiles = () => {
         <Heading title="Saved Missing Persons" />
 
         {!savedPosts ? (
-          <LoadingSpinner />
+          <div className="mt-20">
+            <LoadingSpinner />
+          </div>
         ) : (
           <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {savedPosts.documents.map((listing: Models.Document) => (

@@ -394,7 +394,6 @@ export async function updateMissingPerson(post: UpdatePostProps) {
 }
 
 // GET INIFNITE POSTS //
-
 export async function getInfinitePosts({
   pageParam,
 }: {
@@ -418,6 +417,23 @@ export async function getInfinitePosts({
     return posts;
   } catch (error) {
     console.log("getinfinitepostserror", error);
+    throw error;
+  }
+}
+
+// GET SEARCH PROFILE //
+export async function searchProfile(searchTerm: string) {
+  try {
+    const post = await databases.listDocuments(
+      DATABASE_ID,
+      MISSING_PERSONS_COLLECTION_ID,
+      [Query.search("name", searchTerm)]
+    );
+
+    if (!post) throw Error;
+    return post;
+  } catch (error) {
+    console.log("search profile error", error);
     throw error;
   }
 }

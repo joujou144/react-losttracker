@@ -1,12 +1,33 @@
-import { Heading } from "@/components/custom";
+import {
+  Heading,
+  LoadingSpinner,
+  MissingProfileCard,
+} from "@/components/custom";
 import { Input } from "@/components/ui/input";
-import { useUserContext } from "@/context/useUserContext";
-import { useGetUserSavedPosts } from "@/lib/queries/queries";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+// import useDebounce from "@/hooks/useDebounce";
+import { useGetPosts } from "@/lib/queries/queries";
+// import { Models } from "appwrite";
 import { useState } from "react";
 import { LuListFilter, LuSearch } from "react-icons/lu";
 
 const MissingDatabase = () => {
   const [searchValue, setSearchValue] = useState("");
+  const {
+    data: { pages: posts = [] } = {},
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+    isError,
+    isLoading,
+  } = useGetPosts();
+
+  const loadMoreRef = useInfiniteScroll(fetchNextPage);
+  // const debouncedValue = useDebounce(searchValue, 500);
+  // const { data: searchPost } = useSearchProfile(debouncedValue);
+  const showSearchResults = searchValue !== "";
+  const showProfiles =
+    !showSearchResults && posts.every((item) => item.documents.length === 0);
 
   return (
     <div className="flex flex-1">
@@ -28,7 +49,35 @@ const MissingDatabase = () => {
           <LuListFilter />
         </div>
 
-        <div className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+        {!isLoading && !posts.length && (
+          <p className="text-center">
+            Please cross-check your inputs and try again.
+          </p>
+        )}
+        {isLoading ? (
+          <div className="mt-20">
+            <LoadingSpinner />
+          </div>
+        ) : (
+          <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) =>
+              post.documents.map((profile) => (
+                <li key={profile.$id} className="w-full">
+                  <MissingProfileCard post={profile} />
+                </li>
+              ))
+            )}
+          </ul>
+        )}
+
+        {isError && (
+          <div ref={loadMoreRef}>
+            {isFetchingNextPage && <LoadingSpinner />}
+            {!isFetchingNextPage && !hasNextPage && (
+              <p className="text-center">There is no more data to load</p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

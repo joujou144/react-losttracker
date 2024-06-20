@@ -17,6 +17,7 @@ import {
   getUserListings,
   getUserSavedPosts,
   saveProfile,
+  searchProfile,
   signInAccount,
   signOutAccount,
   updateMissingPerson,
@@ -150,16 +151,24 @@ export const useGetPosts = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
     queryFn: getInfinitePosts,
-    getNextPageParam: (lastPage: string) => {
+    getNextPageParam: (lastPage, allPages) => {
       // If there's no data, there are no more pages.
-      if (lastPage && lastPage.documents.length === 0) {
-        return null;
+      if (lastPage && lastPage?.documents.length) {
+        return allPages.length + 1;
       }
 
       // Use the $id of the last document as the cursor.
-      const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
+      const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;
       return lastId;
     },
+  });
+};
+
+export const useSearchProfile = (searchTerm: string) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.SEARCH_MISSING_PROFILES],
+    queryFn: () => searchProfile(searchTerm),
+    enabled: !!searchTerm,
   });
 };
 

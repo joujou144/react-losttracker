@@ -48,12 +48,14 @@ const Dashboard = () => {
         </div>
 
         {!missingPersons && isPending ? (
-          <LoadingSpinner />
+          <div className="mt-20">
+            <LoadingSpinner />
+          </div>
         ) : (
           <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {missingPersons?.documents.map((post: Models.Document) => (
               <li key={post.$id} className="w-full">
-                <MissingProfileCard post={post} userId={user.id} />
+                <MissingProfileCard post={post} />
               </li>
             ))}
           </ul>
@@ -65,7 +67,9 @@ const Dashboard = () => {
         </Heading>
 
         {!userListings || loadingListings ? (
-          <LoadingSpinner />
+          <div className="mt-10">
+            <LoadingSpinner />
+          </div>
         ) : (
           <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {userListings?.documents.map((listing: Models.Document) => (
