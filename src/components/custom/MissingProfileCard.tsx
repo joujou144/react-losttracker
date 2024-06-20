@@ -18,7 +18,7 @@ const badges: BadgeProps[] = [
 
 const VARIANT_COLOUR = {
   teal: "bg-emerald-500",
-  red: "bg-rose-500",
+  red: "bg-pink-400",
 };
 
 const MissingProfileCard = ({ post }: MissingProfileProps) => {
