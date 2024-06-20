@@ -43,7 +43,7 @@ const SideBackground = () => {
         className="z-30 absolute top-24 left-20"
       />
 
-      <h1 className="z-30 banner-text absolute left-20 bottom-24 max-w-xs md:max-w-md">
+      <h1 className="z-30 text-primary-700 banner-text absolute left-20 bottom-24 max-w-xs md:max-w-md">
         Search. Hope. <br />
         Find Them Alive.
       </h1>
