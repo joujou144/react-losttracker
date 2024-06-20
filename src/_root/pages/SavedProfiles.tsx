@@ -36,6 +36,11 @@ const SavedProfiles = () => {
           </ul>
         )}
         {isError && <p>Unable to load your saved missing profiles.</p>}
+        {!savedPosts?.documents.length && (
+          <p className="text-[16px]">
+            You currently do not have any saved missing person profiles.
+          </p>
+        )}
       </div>
     </div>
   );

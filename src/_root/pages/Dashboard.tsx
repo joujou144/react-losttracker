@@ -84,7 +84,9 @@ const Dashboard = () => {
           </ul>
         )}
         {listingsError && <p>Unable to load your listings.</p>}
-
+        {!userListings?.documents.length && (
+          <p className="text-[16px]">You currently do not have any listings.</p>
+        )}
         <MissingPeopleRecord />
       </div>
     </div>
