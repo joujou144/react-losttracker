@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Allerta+Stencil&Assistant:wght@200..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border list-none p-0 m-0 scroll-smooth;
+  }
+
+  body {
+    @apply bg-dark-100 text-primary-600 min-h-screen font-assistant font-light tracking-wider max-[600px]:text-xxs;
+  }
+}
+
+@layer utilities {
+  /* TYPOGRAPHY */
+  .banner-text {
+    @apply xl:text-[53px] lg:text-[40px] font-allerta text-warm-gray;
+  }
+
+  .h1-bold {
+    @apply text-[36px] font-bold leading-[140%];
+  }
+
+  .h2-bold {
+    @apply text-[16px] md:text-[20px] lg:text-[26px] font-medium leading-[140%];
+  }
+
+  .h3-bold {
+    @apply text-[24px] font-bold leading-[140%] tracking-tighter;
+  }
+
+  .h4-medium {
+    @apply text-[18px] font-medium leading-[140%];
+  }
+
+  .base-medium {
+    @apply text-[16px] font-medium leading-[140%];
+  }
+
+  .base-regular {
+    @apply text-[16px] leading-[140%];
+  }
+
+  .body-bold {
+    @apply text-[18px] font-bold leading-[140%];
+  }
+
+  .body-medium {
+    @apply text-[18px] font-medium leading-[140%];
+  }
+
+  .small-semibold {
+    @apply text-[14px] font-semibold leading-[140%] tracking-tighter;
+  }
+
+  /* UTILITIES */
+
+  .max-container {
+    @apply max-w-[1480px] mx-auto;
+  }
+
+  .main-container {
+    @apply flex flex-col items-center flex-1 gap-6 px-5 md:px-8 py-11 lg:px-16 overflow-y-scroll overflow-x-hidden custom-scrollbar;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #09090a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #90909e;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #70707b;
+  }
+
+  .light-box-background {
+    @apply bg-warm-gray text-midnight font-normal;
+  }
+
+  /* Mobile Top Navigation */
+  .mobile-nav {
+    @apply sticky top-0 z-50 md:hidden bg-dark-200 w-full;
+  }
+
+  /* Mobile Bottom Navigation */
+  .mobile-bottom-nav {
+    @apply z-50 flex-between w-full static bg-dark-200 bottom-0 px-5 py-3 md:hidden;
+  }
+
+  /* Sidebar Navigation */
+  .sidebar {
+    @apply bg-dark-200 hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px];
+  }
+
+  .sidebar-link {
+    @apply hover:bg-primary-500 hover:text-surface-mixed-100 hover:font-medium transition-all duration-200 rounded-lg;
+  }
+
+  /* File uploader */
+  .file_uploader-img {
+    @apply w-full h-80 rounded-lg object-cover object-top;
+  }
+
+  .file_uploader-box {
+    @apply flex-center flex-col h-80 text-gray-50;
+  }
+}
+
+@layer components {
+  /* SHADCN COMPONENTS */
+  /* Form */
+  .shad-form_label {
+    @apply text-primary-700 !important;
+  }
+
+  .shad-input {
+    @apply border-none bg-surface-mixed-100 placeholder:text-surface-mixed-400 rounded-lg focus-visible:ring-0 focus-visible:ring-offset-1 ring-offset-gray-30 !important;
+  }
+
+  .shad-textarea {
+    @apply h-40 resize-none text-primary-700 bg-surface-mixed-100 rounded-lg border-none focus-visible:ring-0 focus-visible:ring-offset-1 placeholder:text-gray-30 ring-offset-gray-30 !important;
+  }
+
+  /* Button */
+
+  .button-light-background {
+    @apply bg-primary-500 text-surface-mixed-100 font-medium;
+  }
+  .shad-button_primary {
+    @apply tracking-wide rounded-lg bg-primary-500 border-[1px] disabled:bg-gray-20 border-primary-500 hover:bg-gray-70 hover:text-primary-500 text-surface-mixed-100 flex gap-2 !important;
+  }
+
+  .shad-button-dark {
+    @apply tracking-wide rounded-lg bg-gray-50 border-2 disabled:bg-gray-20 border-gray-50 hover:bg-gray-70 hover:border-primary-500 text-primary-500 flex gap-2 !important;
+  }
+
+  .shad-button-cancel {
+    @apply tracking-wide rounded-lg bg-surface-mixed-400 border-2 disabled:bg-gray-20 border-surface-mixed-400 hover:bg-gray-70 hover:border-primary-500 text-primary-500  flex gap-2 !important;
+  }
+
+  .shad-button_ghost {
+    @apply flex gap-4 items-center justify-start hover:bg-transparent hover:text-warm-gray !important;
+  }
+}
