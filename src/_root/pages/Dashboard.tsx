@@ -102,21 +102,21 @@ type ProfileBannerProps = {
 const ProfileBanner = ({ user }: ProfileBannerProps) => {
   if (!user) return;
   return (
-    <div className="bg-light-2 rounded-lg p-5 text-surface-mixed-100 flex flex-col lg:flex-row justify-between gap-3">
+    <div className="bg-primary-600 rounded-lg p-5 text-dark-200 flex flex-col lg:flex-row justify-between gap-3">
       <div className="flex-1 lg:w-2/3">
         <h2 className="h2-bold text-left w-full mb-2">{`Welcome, ${getFirstName(
           startCase(user.name)
         )}`}</h2>
-        <p className="font-normal md:text-[18px]">
+        <p className=" md:text-[18px]">
           Your dedication to helping families reunite is invaluable. By sharing
           your knowledge and keeping an eye out, you're making a real
           difference. Together, we can bring hope and find those who are
           missing.
         </p>
       </div>
-      <div className="bg-gray-30 text-primary-700 px-5 py-4 rounded-lg lg:w-1/3 flex flex-col justify-between">
+      <div className="bg-primary-100 text-primary-700 px-5 py-4 rounded-lg lg:w-1/3 flex flex-col justify-between">
         <div className="flex items-center justify-between">
-          <h3 className="font-medium text-[17px]">My Profile</h3>
+          <h3 className="font-medium text-[16px] lg:text-[18px]">My Profile</h3>
           <Link to={`/update-profile/${user.id}`} className="cursor-pointer">
             <PiNotePencil
               size={25}

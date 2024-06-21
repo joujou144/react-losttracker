@@ -10,6 +10,7 @@ import { PiImageBroken, PiNotePencil } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { useToast } from "../ui/use-toast";
 import { CaseStatus } from "@/lib/helpers/caseStatus";
+import { formatDateObj } from "@/lib/helpers/formatDate";
 
 type MissingProfileProps = {
   listing: Models.Document;
@@ -47,7 +48,7 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
   };
 
   return (
-    <div className="bg-surface-mixed-200 rounded-lg text-primary-600 h-[420px]">
+    <div className="bg-primary-500 rounded-lg text-dark-200 h-[430px]">
       <div className="flex flex-col h-full">
         <Link to={`/missing-people/${listing.$id}`}>
           <img
@@ -57,15 +58,11 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
           />
         </Link>
 
-        <div className="px-5 py-3 flex flex-col justify-between h-1/3 relative min-w-[200px]">
-          <div className="flex gap-3 absolute -top-4">
-            <CaseStatus activeCase={listing.activeCase} />
-          </div>
-
-          <div className="flex justify-between items-center mt-2">
-            <h4 className="text-[16px] md:text-[18px] xl:text-[20px] font-medium">
-              {listing.name}
-            </h4>
+        <div className="relative px-5 pb-2 pt-4 bg-blue-100">
+          <div className="flex justify-between items-center">
+            <p className=" text-midnight text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+              Updated {formatDateObj(listing.$updatedAt)}
+            </p>
             {variant === "saved" && (
               <span onClick={handleSaveProfile} className="cursor-pointer">
                 {saved ? (
@@ -83,16 +80,26 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
               >
                 <PiNotePencil
                   size={25}
-                  className="hover:text-gray-70 transition duration-200"
+                  className="text-dark-200 hover:text-primary-600 transition duration-200"
                 />
               </Link>
             )}
           </div>
 
+          <span className="flex gap-3 absolute -top-4">
+            <CaseStatus activeCase={listing.activeCase} />
+          </span>
+        </div>
+
+        <div className="px-5 py-3 flex flex-col justify-between h-1/3 min-w-[200px]">
+          <h4 className="text-[16px] md:text-[18px] xl:text-[20px] font-medium">
+            {listing.name}
+          </h4>
+
           <p className="text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
             Reported missing {listing.date}
           </p>
-          <p className="text-primary-700 text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+          <p className="text-dark-100 font-normal  text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
             {listing.location}
           </p>
         </div>

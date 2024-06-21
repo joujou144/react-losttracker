@@ -25,7 +25,7 @@
   }
 
   .h2-bold {
-    @apply text-[16px] md:text-[20px] lg:text-[26px] font-medium leading-[140%];
+    @apply text-[16px] md:text-[20px] xl:text-[26px] font-medium leading-[140%];
   }
 
   .h3-bold {
@@ -148,7 +148,7 @@
   /* Button */
 
   .button-light-background {
-    @apply bg-primary-500 text-surface-mixed-100 font-medium;
+    @apply bg-primary-600 text-surface-mixed-100 font-medium;
   }
   .shad-button_primary {
     @apply tracking-wide rounded-lg bg-primary-500 border-[1px] disabled:bg-gray-20 border-primary-500 hover:bg-gray-70 hover:text-primary-500 text-surface-mixed-100 flex gap-2 !important;
