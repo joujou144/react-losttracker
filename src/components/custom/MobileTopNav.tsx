@@ -22,7 +22,7 @@ const MobileTopNav = () => {
       <div className="flex flex-between items-center py-4 px-5">
         <Link to="/">
           <img
-            src="/assets/Logo-light.svg"
+            src="/assets/Logo-light-blur.svg"
             alt="logo"
             width={130}
             height="auto"
