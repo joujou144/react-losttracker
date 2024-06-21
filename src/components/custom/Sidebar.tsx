@@ -43,7 +43,10 @@ const Sidebar = () => {
             height="auto"
           />
         </Link>
-        <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">
+        <Link
+          to={`/update-profile/${user.id}`}
+          className="flex gap-3 items-center"
+        >
           <Avatar>
             <AvatarImage />
             <AvatarFallback className="text-surface-mixed-100 bg-primary-600 font-medium">

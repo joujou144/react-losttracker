@@ -1,20 +1,19 @@
-import { Routes, Route } from "react-router-dom";
-import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
+import { Route, Routes } from "react-router-dom";
+import AuthLayout from "./_auth/AuthLayout";
 import Login from "./_auth/forms/Login";
 import Signup from "./_auth/forms/Signup";
-import AuthLayout from "./_auth/AuthLayout";
-import PrivateRoutes from "./_root/PrivateRoutes";
-import { Toaster } from "@/components/ui/toaster";
 import {
   AddMissingPerson,
   Dashboard,
   MissingDatabase,
   MissingPersonDetails,
-  Profile,
   SavedProfiles,
   UpdateMissingPerson,
   UpdateProfile,
 } from "./_root/pages";
+import PrivateRoutes from "./_root/PrivateRoutes";
+import "./globals.css";
 
 function App() {
   return (
@@ -41,7 +40,7 @@ function App() {
             path="/missing-people/update-missing-person/:id"
             element={<UpdateMissingPerson />}
           />
-          <Route path="/profile/:id/*" element={<Profile />} />
+
           <Route path="/update-profile/:id" element={<UpdateProfile />} />
         </Route>
       </Routes>
