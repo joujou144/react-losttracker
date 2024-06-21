@@ -12,7 +12,7 @@ const AuthLayout = () => {
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center h-svh lg:h-screen">
             <div className="p-6 w-[435px] lg:w-[490px]">
               <img
-                src="/assets/Logo-light-losttracker.svg"
+                src="/assets/Logo-light.svg"
                 alt="losttracker-logo"
                 className="block lg:hidden mb-6 h-auto"
               />
@@ -38,7 +38,7 @@ const SideBackground = () => {
       />
 
       <img
-        src="/assets/Logo-light-losttracker.svg"
+        src="/assets/Logo-light.svg"
         alt="losttracker-logo"
         className="z-30 absolute top-24 left-20"
       />

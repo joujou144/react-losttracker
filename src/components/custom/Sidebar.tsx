@@ -37,7 +37,7 @@ const Sidebar = () => {
       <div className="flex flex-col gap-10">
         <Link to="/">
           <img
-            src="/assets/Logo-light-losttracker.svg"
+            src="/assets/Logo-light.svg"
             alt="logo"
             width={145}
             height="auto"
