@@ -3,6 +3,7 @@ import {
   LoadingSpinner,
   MissingProfileCard,
 } from "@/components/custom";
+import InfoBoard from "@/components/custom/InfoBoard";
 import UserListingCard from "@/components/custom/UserListingCard";
 import { useUserContext } from "@/context/useUserContext";
 import { getRandomNumber } from "@/lib/helpers/getRandomNumber";
@@ -153,8 +154,7 @@ const MissingPeopleRecord = () => {
       </Heading>
 
       {/* Card with NCIC statistics */}
-      <div className="bg-dark-600 text-primary-700 px-5 py-6 rounded-lg shadow-md mb-6">
-        <Heading title="Missing People by the Numbers" className="mb-4" />
+      <InfoBoard title={"Missing People by the Numbers"}>
         <p className="md:text-[16px]">
           By the end of December 2022, the NCA (National Crime Agency) held
           57,125 active missing person cases. Of these, 10,512 (31 percent)
@@ -168,7 +168,7 @@ const MissingPeopleRecord = () => {
           returned home, or the records were deemed invalid and deleted by the
           registering agency.
         </p>
-      </div>
+      </InfoBoard>
 
       {/* Statistics cards */}
       <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 text-primary-700">

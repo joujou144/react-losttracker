@@ -1,4 +1,5 @@
 import { Heading, Label, LoadingSpinner } from "@/components/custom";
+import InfoBoard from "@/components/custom/InfoBoard";
 import { useToast } from "@/components/ui/use-toast";
 import { CaseStatus } from "@/lib/helpers/caseStatus";
 import { formatDateObj } from "@/lib/helpers/formatDate";
@@ -109,12 +110,15 @@ const MissingPersonDetails = () => {
         </div>
         {isError && <p>Unable to load data.</p>}
 
-        <div className="bg-gray-30 rounded-lg p-5">
-          <Heading title={upperCase("Who To Contact")} className="mb-4" />
+        <InfoBoard title={upperCase("who to contact")}>
           <p className="text-pretty lg:text-[15px]">
-            {`If you have any information on the whereabouts of ${post?.name}, you are encouraged to contact the Local Police Department at 123-456-789, ask for Detective Jane Doe.`}
+            If you have any information on the whereabouts of{" "}
+            <span className="font-normal">{post?.name}</span>, you are
+            encouraged to contact the Local Police Department at 123-456-789,
+            ask for Detective Jane Doe. Please include case number{" "}
+            <span className="font-normal">555 555</span> as you will need it.
           </p>
-        </div>
+        </InfoBoard>
       </div>
     </div>
   );
