@@ -8,3 +8,5 @@ export { default as FileUploader } from "./FileUploader";
 export { default as Heading } from "./Heading";
 export { default as MissingProfileCard } from "./MissingProfileCard";
 export { default as Label } from "./Label";
+export { default as InfoBoard } from "./InfoBoard";
+export { default as AdviceBoard } from "./AdviceBoard";

@@ -13,9 +13,7 @@ const InfoBoard = ({ children, className, title }: InfoBoardProps) => {
 
   return (
     <div
-      className={cn(
-        `${className} bg-dark-600 text-primary-700 px-5 py-6 rounded-lg mb-6`
-      )}
+      className={cn(`${className} bg-dark-600 text-primary-700 p-5 rounded-lg`)}
     >
       <Heading title={renderTitle} className="mb-4" />
       {children}
