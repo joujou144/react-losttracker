@@ -71,52 +71,69 @@ const MissingPersonDetails = () => {
           </Link>
         </div>
 
-        <div className="bg-surface-mixed-200 rounded-lg text-primary-600 lg:flex flex-row">
-          <div className="flex-shrink-0 w-full lg:w-1/2 xl:w-[40%]">
-            <img
-              src={post?.imageUrl || <PiImageBroken />}
-              className="w-full h-auto lg:h-full rounded-t-lg lg:rounded-tl-lg lg:rounded-bl-lg lg:rounded-t-none object-cover object-center lg:object-top  transition-all"
-              alt={`${post?.name}'s photo`}
-            />
-          </div>
-
-          <div className="px-5 py-4 flex flex-col gap-4 justify-between">
-            <div className="flex justify-between items-center">
-              <Heading title={post?.name} />
-
-              <span onClick={handleSaveProfile} className="cursor-pointer">
-                {saved ? (
-                  <MdBookmark size={25} />
-                ) : (
-                  <MdBookmarkBorder size={25} />
-                )}
-              </span>
+        <div className="rounded-lg bg-primary-700 text-dark-200">
+          <div className=" lg:flex flex-row">
+            <div className="flex-shrink-0 w-full lg:w-1/2 xl:w-[40%]">
+              <img
+                src={post?.imageUrl || <PiImageBroken />}
+                className="w-full h-auto lg:h-full rounded-t-lg lg:rounded-tl-lg lg:rounded-t-none object-cover object-center lg:object-top  transition-all"
+                alt={`${post?.name}'s photo`}
+              />
             </div>
 
-            <Label label="case status">
-              <CaseStatus activeCase={post.activeCase} />
-            </Label>
+            <div className="px-5 py-4 lg:pb-0 flex flex-col gap-4 justify-between lg:w-1/2 xl:w-[60%]">
+              <div className="flex justify-between items-center">
+                <Heading title={post?.name} />
 
-            <Label label="missing from">{post?.location}</Label>
+                <span onClick={handleSaveProfile} className="cursor-pointer">
+                  {saved ? (
+                    <MdBookmark size={25} />
+                  ) : (
+                    <MdBookmarkBorder size={25} />
+                  )}
+                </span>
+              </div>
 
-            <Label label="reported missing">{post?.date}</Label>
+              {/* Case details */}
+              <Label
+                label="case status"
+                labelClass="pt-4 border-t-4 border-primary-200"
+              >
+                <CaseStatus activeCase={post.activeCase} />
+              </Label>
+              <Label label="case entered">
+                {formatDateObj(post?.$createdAt)}
+              </Label>
+              <Label label="missing from">{post?.location}</Label>
 
-            <Label label="case entered">
-              {formatDateObj(post?.$createdAt)}
-            </Label>
+              <Label label="category">Missing adults</Label>
+              <Label label="source of record">Family/Friends</Label>
+              <Label label="reported missing">{post?.date}</Label>
 
-            <Label label="details of disappearance">{post?.description}</Label>
+              {/* Physical details */}
+              <div className="border-primary-200 border-y-4 flex flex-col gap-4 flex-1 lg:flex-row justify-between py-4">
+                <Label label="Sex">Female</Label>
+                <Label label="Ethinicity">Caucasian</Label>
+                <Label label="Age Range">30-39</Label>
+              </div>
+            </div>
           </div>
+
+          {/*  Information Details */}
+          <Label label="details of disappearance" className="p-5">
+            {post?.description}
+          </Label>
         </div>
-        {isError && <p>Unable to load data.</p>}
+        {isError && <p className="text-center">Unable to load data.</p>}
 
         <InfoBoard title={upperCase("who to contact")}>
           <p className="text-pretty lg:text-[15px]">
             If you have any information on the whereabouts of{" "}
-            <span className="font-normal">{post?.name}</span>, you are
-            encouraged to contact the Local Police Department at 123-456-789,
-            ask for Detective Jane Doe. Please include case number{" "}
-            <span className="font-normal">555 555</span> as you will need it.
+            <span className="font-normal text-blue-300">{post?.name}</span>, you
+            are encouraged to contact the Local Police Department at
+            123-456-789, ask for Detective Jane Doe. Please include case number{" "}
+            <span className="font-normal text-blue-300">555 555</span> as you
+            will need it.
           </p>
         </InfoBoard>
       </div>
