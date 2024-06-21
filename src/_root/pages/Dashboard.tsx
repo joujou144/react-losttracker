@@ -15,8 +15,8 @@ import {
 import { ExistingUserProps } from "@/types";
 import { Models } from "appwrite";
 import { startCase } from "lodash";
+import { FiEdit2 } from "react-icons/fi";
 import { MdUpdate } from "react-icons/md";
-import { PiNotePencil } from "react-icons/pi";
 import { RiFileListLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
@@ -102,7 +102,7 @@ type ProfileBannerProps = {
 const ProfileBanner = ({ user }: ProfileBannerProps) => {
   if (!user) return;
   return (
-    <div className="bg-primary-600 rounded-lg p-5 text-dark-200 flex flex-col lg:flex-row justify-between gap-3">
+    <div className="bg-slate-200 rounded-lg p-5 text-dark-200 flex flex-col lg:flex-row justify-between gap-3">
       <div className="flex-1 lg:w-2/3">
         <h2 className="h2-bold text-left w-full mb-2">{`Welcome, ${getFirstName(
           startCase(user.name)
@@ -114,12 +114,12 @@ const ProfileBanner = ({ user }: ProfileBannerProps) => {
           missing.
         </p>
       </div>
-      <div className="bg-primary-100 text-primary-700 px-5 py-4 rounded-lg lg:w-1/3 flex flex-col justify-between">
+      <div className="bg-primary-200 text-primary-700 px-5 py-4 rounded-lg lg:w-1/3 flex flex-col justify-between">
         <div className="flex items-center justify-between">
           <h3 className="font-medium text-[16px] lg:text-[18px]">My Profile</h3>
           <Link to={`/update-profile/${user.id}`} className="cursor-pointer">
-            <PiNotePencil
-              size={25}
+            <FiEdit2
+              size={18}
               className="hover:text-gray-70 transition duration-200"
             />
           </Link>
@@ -153,7 +153,7 @@ const MissingPeopleRecord = () => {
       </Heading>
 
       {/* Card with NCIC statistics */}
-      <div className="bg-stone-400 text-primary-700 font-normal px-5 py-6 rounded-lg shadow-md mb-6">
+      <div className="bg-dark-600 text-primary-700 px-5 py-6 rounded-lg shadow-md mb-6">
         <Heading title="Missing People by the Numbers" className="mb-4" />
         <p className="md:text-[16px]">
           By the end of December 2022, the NCA (National Crime Agency) held

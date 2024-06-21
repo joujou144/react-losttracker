@@ -1,3 +1,5 @@
+import { CaseStatus } from "@/lib/helpers/caseStatus";
+import { formatDateObj } from "@/lib/helpers/formatDate";
 import {
   useDeleteSavedProfile,
   useGetCurrentAccount,
@@ -5,12 +7,11 @@ import {
 } from "@/lib/queries/queries";
 import { Models } from "appwrite";
 import { useEffect, useState } from "react";
+import { FiEdit2 } from "react-icons/fi";
 import { MdBookmark, MdBookmarkBorder } from "react-icons/md";
-import { PiImageBroken, PiNotePencil } from "react-icons/pi";
+import { PiImageBroken } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { useToast } from "../ui/use-toast";
-import { CaseStatus } from "@/lib/helpers/caseStatus";
-import { formatDateObj } from "@/lib/helpers/formatDate";
 
 type MissingProfileProps = {
   listing: Models.Document;
@@ -48,7 +49,7 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
   };
 
   return (
-    <div className="bg-primary-500 rounded-lg text-dark-200 h-[430px]">
+    <div className="bg-primary-700 rounded-lg text-dark-200 h-[430px]">
       <div className="flex flex-col h-full">
         <Link to={`/missing-people/${listing.$id}`}>
           <img
@@ -58,9 +59,9 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
           />
         </Link>
 
-        <div className="relative px-5 pb-2 pt-4 bg-blue-100">
+        <div className="relative px-5 pb-2 pt-4 bg-primary-600 text-surface-mixed-400">
           <div className="flex justify-between items-center">
-            <p className=" text-midnight text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+            <p className="  text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
               Updated {formatDateObj(listing.$updatedAt)}
             </p>
             {variant === "saved" && (
@@ -78,9 +79,9 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
                 to={`/missing-people/update-missing-person/${listing.$id}`}
                 className={`${currentUser?.$id !== userId && "hidden"}`}
               >
-                <PiNotePencil
-                  size={25}
-                  className="text-dark-200 hover:text-primary-600 transition duration-200"
+                <FiEdit2
+                  size={18}
+                  className=" hover:text-dark-200 transition duration-200"
                 />
               </Link>
             )}

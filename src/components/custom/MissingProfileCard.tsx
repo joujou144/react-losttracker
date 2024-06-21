@@ -23,7 +23,7 @@ const VARIANT_COLOUR = {
 
 const MissingProfileCard = ({ post }: MissingProfileProps) => {
   return (
-    <div className="bg-slate-200 rounded-lg text-dark-200 h-[420px]">
+    <div className="bg-primary-700 rounded-lg text-dark-200 h-[420px]">
       <div className="flex flex-col h-full">
         <Link to={`/missing-people/${post.$id}`}>
           <img
