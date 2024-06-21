@@ -103,17 +103,17 @@
 
   /* Mobile Top Navigation */
   .mobile-nav {
-    @apply sticky top-0 z-50 md:hidden bg-dark-200 w-full;
+    @apply sticky top-0 z-50 md:hidden bg-surface-mixed-100 w-full;
   }
 
   /* Mobile Bottom Navigation */
   .mobile-bottom-nav {
-    @apply z-50 flex-between w-full static bg-dark-200 bottom-0 px-5 py-3 md:hidden;
+    @apply z-50 flex-between w-full static bg-surface-mixed-100 bottom-0 px-5 py-3 md:hidden;
   }
 
   /* Sidebar Navigation */
   .sidebar {
-    @apply bg-dark-200 hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px];
+    @apply bg-surface-mixed-100 hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px];
   }
 
   .sidebar-link {
