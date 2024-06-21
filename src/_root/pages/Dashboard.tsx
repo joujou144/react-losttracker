@@ -171,11 +171,11 @@ const MissingPeopleRecord = () => {
       </InfoBoard>
 
       {/* Statistics cards */}
-      <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 text-primary-700">
+      <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 text-primary-700 mt-6">
         {stats.map(({ label, number }) => (
           <li
             key={label}
-            className="bg-gray-50 px-5 py-4 rounded-lg shadow-md h-[120px] flex flex-col justify-between"
+            className="bg-dark-300 px-5 py-4 rounded-lg shadow-md h-[120px] flex flex-col justify-between"
           >
             <h4 className="text-sm md:text-[16px] overflow-hidden text-ellipsis mb-2">
               {label}

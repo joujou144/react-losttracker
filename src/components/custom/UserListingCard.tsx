@@ -59,7 +59,7 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
           />
         </Link>
 
-        <div className="relative px-5 pb-2 pt-4 bg-primary-600 text-surface-mixed-400">
+        <div className="relative px-5 pb-2 pt-4 bg-primary-600 text-surface-mixed-200">
           <div className="flex justify-between items-center">
             <p className="  text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
               Updated {formatDateObj(listing.$updatedAt)}
