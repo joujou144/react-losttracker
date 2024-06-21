@@ -6,6 +6,7 @@ import {
   useGetUserSavedPosts,
 } from "@/lib/queries/queries";
 import { Models } from "appwrite";
+import { MdOutlineBookmarks } from "react-icons/md";
 
 const SavedProfiles = () => {
   const { data: currentUser } = useGetCurrentAccount();
@@ -16,7 +17,9 @@ const SavedProfiles = () => {
   return (
     <div className="flex flex-1">
       <div className="main-container">
-        <Heading title="Saved Missing Persons" />
+        <Heading title="Saved Missing Persons">
+          <MdOutlineBookmarks size={30} />
+        </Heading>
 
         {!savedPosts ? (
           <div className="mt-20">
