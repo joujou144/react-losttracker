@@ -23,7 +23,6 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
   const { toast } = useToast();
   const { mutate: saveProfile } = useSaveProfile();
   const { mutate: deleteSavedProfile } = useDeleteSavedProfile();
-  console.log("listing", listing);
   const savedProfileRecord = currentUser?.save.find(
     (record: Models.Document) => record.missingPerson.$id === listing?.$id
   );

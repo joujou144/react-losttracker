@@ -42,27 +42,7 @@ const Dashboard = () => {
       <div className="main-container">
         <ProfileBanner user={user} />
 
-        <div className="text-left w-full mt-4">
-          <Heading title="Latest Missing Persons Cases" className="mb-2" />
-          <p className="text-xs text-gray-30">Updated {currentDate}</p>
-        </div>
-
-        {!missingPersons && isPending ? (
-          <div className="mt-20">
-            <LoadingSpinner />
-          </div>
-        ) : (
-          <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {missingPersons?.documents.map((post: Models.Document) => (
-              <li key={post.$id} className="w-full">
-                <MissingProfileCard post={post} />
-              </li>
-            ))}
-          </ul>
-        )}
-        {isError && <p>Unable to load data.</p>}
-
-        <Heading title="My Listings" className="mt-6">
+        <Heading title="My Listings" className="mt-4">
           <RiFileListLine size={30} />
         </Heading>
 
@@ -87,6 +67,28 @@ const Dashboard = () => {
         {!userListings?.documents.length && (
           <p className="text-[16px]">You currently do not have any listings.</p>
         )}
+
+        {/* Latest Missing Cases */}
+        <div className="text-left w-full mt-4">
+          <Heading title="Latest Missing Persons Cases" className="mb-2" />
+          <p className="text-xs text-gray-30">Updated {currentDate}</p>
+        </div>
+
+        {!missingPersons && isPending ? (
+          <div className="mt-20">
+            <LoadingSpinner />
+          </div>
+        ) : (
+          <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {missingPersons?.documents.map((post: Models.Document) => (
+              <li key={post.$id} className="w-full">
+                <MissingProfileCard post={post} />
+              </li>
+            ))}
+          </ul>
+        )}
+        {isError && <p>Unable to load data.</p>}
+
         <MissingPeopleRecord />
       </div>
     </div>
@@ -102,17 +104,19 @@ const ProfileBanner = ({ user }: ProfileBannerProps) => {
   return (
     <div className="bg-light-2 rounded-lg p-5 text-surface-mixed-100 flex flex-col lg:flex-row justify-between gap-3">
       <div className="flex-1 lg:w-2/3">
-        <h2 className="h2-bold text-left w-full mb-2">{`Hope Always Prevails, ${getFirstName(
+        <h2 className="h2-bold text-left w-full mb-2">{`Welcome, ${getFirstName(
           startCase(user.name)
         )}`}</h2>
         <p className="font-normal md:text-[18px]">
-          With your assistance, we can reconnect the missing with their families
-          and provide the closure they seek.
+          Your dedication to helping families reunite is invaluable. By sharing
+          your knowledge and keeping an eye out, you're making a real
+          difference. Together, we can bring hope and find those who are
+          missing.
         </p>
       </div>
-      <div className="bg-gray-30 text-primary-700 px-5 py-3 rounded-lg lg:w-1/3">
+      <div className="bg-gray-30 text-primary-700 px-5 py-4 rounded-lg lg:w-1/3 flex flex-col justify-between">
         <div className="flex items-center justify-between">
-          <h3 className="font-medium text-[17px] mb-2">My Profile</h3>
+          <h3 className="font-medium text-[17px]">My Profile</h3>
           <Link to={`/update-profile/${user.id}`} className="cursor-pointer">
             <PiNotePencil
               size={25}
@@ -121,8 +125,11 @@ const ProfileBanner = ({ user }: ProfileBannerProps) => {
           </Link>
         </div>
 
-        <p>{startCase(user.name)}</p>
-        <p>{user.email}</p>
+        {/* User details */}
+        <div>
+          <p>{startCase(user.name)}</p>
+          <p>{user.email}</p>
+        </div>
       </div>
     </div>
   );
@@ -140,7 +147,7 @@ const MissingPeopleRecord = () => {
   ];
 
   return (
-    <div className="mt-6">
+    <div className="mt-4">
       <Heading title="Missing People Statistics" className="mb-6">
         <MdUpdate size={30} />
       </Heading>
