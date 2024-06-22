@@ -85,7 +85,7 @@ const MissingPersonDetails = () => {
               </Link>
             </div>
 
-            <div className="rounded-lg bg-primary-700 text-dark-200">
+            <div className="rounded-lg bg-slate-300 text-dark-100">
               <div className="lg:flex flex-row">
                 <div className="flex-shrink-0 w-full lg:w-1/2 xl:w-[40%]">
                   <img
@@ -114,7 +114,7 @@ const MissingPersonDetails = () => {
                   {/* Case details */}
                   <Label
                     label="case status"
-                    labelClass="pt-4 border-t-4 border-primary-200"
+                    labelClass="pt-4 border-t-4 border-gray-100"
                   >
                     <CaseStatus activeCase={post.activeCase} />
                   </Label>
@@ -128,7 +128,7 @@ const MissingPersonDetails = () => {
                   <Label label="reported missing">{post?.date}</Label>
 
                   {/* Physical details */}
-                  <div className="border-primary-200 border-y-4 flex flex-col gap-4 flex-1 lg:flex-row justify-between py-4">
+                  <div className="border-gray-100 border-y-4 flex flex-col gap-4 flex-1 lg:flex-row justify-between py-4">
                     <Label label="Sex">Female</Label>
                     <Label label="Ethinicity">Caucasian</Label>
                     <Label label="Age Range">30-39</Label>

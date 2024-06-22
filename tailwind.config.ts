@@ -52,6 +52,7 @@ module.exports = {
         highlight: "#3291ff",
         cream: "#FDF5E6",
         crimson: "#950720",
+        grapefruit: "#DA4453",
         amaranth: "#E52B50",
         "dark-1": "#000000",
         "dark-2": "#09090A",

@@ -3,8 +3,8 @@ type BadgeProps = {
 };
 
 const VARIANT_COLOUR = {
-  active: "bg-emerald-500",
-  cold: "bg-blue-500",
+  active: "bg-green-500 ",
+  cold: "bg-black",
 };
 
 export const CaseStatus = ({ activeCase }: BadgeProps) => {
@@ -12,7 +12,7 @@ export const CaseStatus = ({ activeCase }: BadgeProps) => {
 
   return (
     <span
-      className={`${VARIANT_COLOUR[status]} text-primary-700 px-4 py-1 rounded-2xl`}
+      className={`${VARIANT_COLOUR[status]} text-primary-700 font-normal  px-4 py-1 rounded-2xl`}
     >
       {status === "active" ? "Active" : "Cold"}
     </span>

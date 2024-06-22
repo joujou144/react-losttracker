@@ -17,13 +17,13 @@ const badges: BadgeProps[] = [
 ];
 
 const VARIANT_COLOUR = {
-  teal: "bg-emerald-500",
-  red: "bg-red-600",
+  teal: "bg-green-500",
+  red: "bg-grapefruit",
 };
 
 const MissingProfileCard = ({ post }: MissingProfileProps) => {
   return (
-    <div className="bg-primary-700 rounded-lg text-dark-200 h-[420px]">
+    <div className="bg-slate-200 rounded-lg text-dark-200 h-[420px]">
       <div className="flex flex-col h-full">
         <Link to={`/missing-people/${post.$id}`}>
           <img
@@ -38,7 +38,7 @@ const MissingProfileCard = ({ post }: MissingProfileProps) => {
             {badges.map(({ label, variant }) => (
               <li
                 key={label}
-                className={`${VARIANT_COLOUR[variant]} text-primary-700 px-4 py-1 rounded-2xl text-xs md:text-sm`}
+                className={`${VARIANT_COLOUR[variant]} text-primary-700 font-medium px-4 py-1 rounded-2xl text-xs md:text-sm`}
               >
                 {label}
               </li>
