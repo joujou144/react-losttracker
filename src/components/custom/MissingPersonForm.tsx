@@ -105,7 +105,7 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-8 w-full"
+        className="flex flex-col gap-8 w-full lg:w-[65%] self-start"
       >
         <FormField
           control={form.control}

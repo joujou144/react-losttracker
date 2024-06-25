@@ -54,56 +54,59 @@ const MissingDatabase = () => {
   return (
     <div className="flex flex-1">
       <div className="main-container">
-        <Heading title="Search All Missing Persons" />
+        <div className="2xl:w-[60%] self-start">
+          <Heading title="Search All Missing Persons" />
 
-        <h3 className="px-5 py-4 bg-surface-mixed-300 rounded-lg">
-          When a loved one goes missing, it can be distressing and overwhelming.
-          We are dedicated to helping you find missing people in your
-          area.Whether you are a concerned citizen, a friend, or a family member
-          looking for a loved one, our website serves as a valuable resource in
-          raising awareness and facilitating the search for missing individuals.
-        </h3>
-        <div className="flex items-center gap-1 px-4 w-full rounded-lg bg-dark-200 ">
-          <LuSearch size={20} />
-          <Input
-            type="text"
-            value={searchValue}
-            onChange={handleSearchChange}
-            onKeyDown={handleKeyDown}
-            placeholder="Search database"
-            className="bg-dark-200 border-none placeholder:text-gray-30 focus-visible:ring-0 focus-visible:ring-offset-0 ring-offset-0 !important"
-          />
+          <h3 className="px-5 py-4 bg-surface-mixed-300 rounded-lg">
+            When a loved one goes missing, it can be distressing and
+            overwhelming. We are dedicated to helping you find missing people in
+            your area.Whether you are a concerned citizen, a friend, or a family
+            member looking for a loved one, our website serves as a valuable
+            resource in raising awareness and facilitating the search for
+            missing individuals.
+          </h3>
+          <div className="flex items-center gap-1 px-4 w-full rounded-lg bg-dark-200 ">
+            <LuSearch size={20} />
+            <Input
+              type="text"
+              value={searchValue}
+              onChange={handleSearchChange}
+              onKeyDown={handleKeyDown}
+              placeholder="Search database"
+              className="bg-dark-200 border-none placeholder:text-gray-30 focus-visible:ring-0 focus-visible:ring-offset-0 ring-offset-0 !important"
+            />
+          </div>
+
+          {isLoading && (
+            <div className="mt-20 flex justify-center">
+              <LoadingSpinner />
+            </div>
+          )}
+
+          {!isLoading && (
+            <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4">
+              {filteredPosts.length > 0 ? (
+                filteredPosts.map((profile) => (
+                  <li key={profile.$id} className="w-full">
+                    <MissingProfileCard post={profile} />
+                  </li>
+                ))
+              ) : (
+                <p className="text-center">
+                  {debouncedValue ? "No results found" : "No data available"}
+                </p>
+              )}
+            </ul>
+          )}
+
+          {isFetchingNextPage && hasNextPage && !searchValue ? (
+            <div className="mt-4 flex justify-center" ref={ref}>
+              <LoadingSpinner />
+            </div>
+          ) : (
+            <p className="text-center mt-4">There is no more data to load</p>
+          )}
         </div>
-
-        {isLoading && (
-          <div className="mt-20 flex justify-center">
-            <LoadingSpinner />
-          </div>
-        )}
-
-        {!isLoading && (
-          <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4">
-            {filteredPosts.length > 0 ? (
-              filteredPosts.map((profile) => (
-                <li key={profile.$id} className="w-full">
-                  <MissingProfileCard post={profile} />
-                </li>
-              ))
-            ) : (
-              <p className="text-center">
-                {debouncedValue ? "No results found" : "No data available"}
-              </p>
-            )}
-          </ul>
-        )}
-
-        {isFetchingNextPage && hasNextPage && !searchValue ? (
-          <div className="mt-4 flex justify-center" ref={ref}>
-            <LoadingSpinner />
-          </div>
-        ) : (
-          <p className="text-center">There is no more data to load</p>
-        )}
       </div>
     </div>
   );

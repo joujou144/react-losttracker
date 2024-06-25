@@ -9,7 +9,7 @@ const AddMissingPerson = () => {
           <MdOutlineNoteAdd size={30} />
         </Heading>
 
-        <p className="px-5 py-4 bg-surface-mixed-300 rounded-lg font-normal self-start w-full">
+        <p className="px-5 py-4 bg-surface-mixed-300 rounded-lg font-normal self-start  w-full lg:w-[65%]">
           Important: Please profile your missing person in our database only
           when you have already filed a verifiable police report with local
           authorities.

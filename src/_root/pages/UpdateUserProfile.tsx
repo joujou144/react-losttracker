@@ -70,69 +70,71 @@ const UpdateProfile = () => {
           <MdOutlineNoteAdd size={30} />
         </Heading>
 
-        {!user && (
-          <div className="mt-10">
-            <LoadingSpinner />
-          </div>
-        )}
-
-        {/* User Profile Form */}
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(handleUpdate)}
-            className="space-y-6 flex flex-col mt-6 w-full lg:w-[60%] xl:w-1/2 self-start"
-          >
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Full Name</FormLabel>
-                  <FormControl>
-                    <Input type="text" className="shad-input" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      className="shad-input"
-                      {...field}
-                      disabled
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="flex gap-4 items-center justify-end">
-              <Button
-                type="button"
-                className="shad-button-cancel"
-                onClick={() => navigate("/")}
-              >
-                Cancel
-              </Button>
-              <Button
-                type="submit"
-                className="shad-button_primary whitespace-nowrap self-end"
-                disabled={isUpdatingUser}
-              >
-                Update Profile
-                {isUpdatingUser && <LoadingSpinner />}
-              </Button>
+        <div className="flex flex-col items-center flex-1 gap-6 self-start w-full 2xl:w-[60%]">
+          {!user && (
+            <div className="mt-10">
+              <LoadingSpinner />
             </div>
-          </form>
-        </Form>
+          )}
+
+          {/* User Profile Form */}
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(handleUpdate)}
+              className="space-y-6 flex flex-col mt-6 w-full lg:w-[60%] xl:w-1/2 self-start"
+            >
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                      <Input type="text" className="shad-input" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        className="shad-input"
+                        {...field}
+                        disabled
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="flex gap-4 items-center justify-end">
+                <Button
+                  type="button"
+                  className="shad-button-cancel"
+                  onClick={() => navigate("/")}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  className="shad-button_primary whitespace-nowrap self-end"
+                  disabled={isUpdatingUser}
+                >
+                  Update Profile
+                  {isUpdatingUser && <LoadingSpinner />}
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </div>
       </div>
     </div>
   );

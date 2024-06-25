@@ -41,56 +41,60 @@ const Dashboard = () => {
   return (
     <div className="flex flex-1">
       <div className="main-container">
-        <ProfileBanner user={user} />
+        <div className="flex flex-col items-center flex-1 gap-6 self-start w-full 2xl:w-[60%]">
+          <ProfileBanner user={user} />
 
-        <Heading title="My Listings" className="mt-4">
-          <RiFileListLine size={30} />
-        </Heading>
+          <Heading title="My Listings" className="mt-4">
+            <RiFileListLine size={30} />
+          </Heading>
 
-        {!userListings || loadingListings ? (
-          <div className="mt-10">
-            <LoadingSpinner />
+          {!userListings || loadingListings ? (
+            <div className="mt-10">
+              <LoadingSpinner />
+            </div>
+          ) : (
+            <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {userListings?.documents.map((listing: Models.Document) => (
+                <li key={listing.$id} className="w-full">
+                  <UserListingCard
+                    listing={listing}
+                    userId={user.id}
+                    variant="edit"
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
+          {listingsError && <p>Unable to load your listings.</p>}
+          {!userListings?.documents.length && (
+            <p className="text-[16px]">
+              You currently do not have any listings.
+            </p>
+          )}
+
+          {/* Latest Missing Cases */}
+          <div className="text-left w-full mt-4">
+            <Heading title="Latest Missing Persons Cases" className="mb-2" />
+            <p className="text-xs text-gray-30">Updated {currentDate}</p>
           </div>
-        ) : (
-          <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {userListings?.documents.map((listing: Models.Document) => (
-              <li key={listing.$id} className="w-full">
-                <UserListingCard
-                  listing={listing}
-                  userId={user.id}
-                  variant="edit"
-                />
-              </li>
-            ))}
-          </ul>
-        )}
-        {listingsError && <p>Unable to load your listings.</p>}
-        {!userListings?.documents.length && (
-          <p className="text-[16px]">You currently do not have any listings.</p>
-        )}
 
-        {/* Latest Missing Cases */}
-        <div className="text-left w-full mt-4">
-          <Heading title="Latest Missing Persons Cases" className="mb-2" />
-          <p className="text-xs text-gray-30">Updated {currentDate}</p>
+          {!missingPersons && isPending ? (
+            <div className="mt-20">
+              <LoadingSpinner />
+            </div>
+          ) : (
+            <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {missingPersons?.documents.map((post: Models.Document) => (
+                <li key={post.$id} className="w-full">
+                  <MissingProfileCard post={post} />
+                </li>
+              ))}
+            </ul>
+          )}
+          {isError && <p>Unable to load data.</p>}
+
+          <MissingPeopleRecord />
         </div>
-
-        {!missingPersons && isPending ? (
-          <div className="mt-20">
-            <LoadingSpinner />
-          </div>
-        ) : (
-          <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {missingPersons?.documents.map((post: Models.Document) => (
-              <li key={post.$id} className="w-full">
-                <MissingProfileCard post={post} />
-              </li>
-            ))}
-          </ul>
-        )}
-        {isError && <p>Unable to load data.</p>}
-
-        <MissingPeopleRecord />
       </div>
     </div>
   );
