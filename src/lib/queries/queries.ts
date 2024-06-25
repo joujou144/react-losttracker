@@ -1,4 +1,9 @@
-import { NewPostProps, NewUserProps, UpdatePostProps } from "@/types";
+import {
+  NewPostProps,
+  NewUserProps,
+  UpdatePostProps,
+  UpdateUserProps,
+} from "@/types";
 import {
   useInfiniteQuery,
   useMutation,
@@ -22,6 +27,7 @@ import {
   signInAccount,
   signOutAccount,
   updateMissingPerson,
+  updateUserProfile,
 } from "../appwrite/api";
 import { QUERY_KEYS } from "./queryKeys";
 
@@ -185,5 +191,20 @@ export const useGetUserById = (userId: string) => {
     queryKey: [QUERY_KEYS.GET_USER_BY_ID, userId],
     queryFn: () => getUserProfileById(userId),
     enabled: !!userId,
+  });
+};
+
+export const useUpdateUserProfile = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (user: UpdateUserProps) => updateUserProfile(user),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_USER_BY_ID, data?.$id],
+      });
+    },
   });
 };

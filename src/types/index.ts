@@ -20,12 +20,6 @@ export type ExistingUserProps = {
   imageUrl: string;
 };
 
-// export type NavLinkProps = {
-//   imgURL: string;
-//   route: string;
-//   label: string;
-// };
-
 export type NewPostProps = {
   userId: string;
   name: string;
@@ -44,4 +38,9 @@ export type UpdatePostProps = {
   file: File[];
   location: string;
   date: Date;
+};
+
+export type UpdateUserProps = {
+  userId: string;
+  name: string;
 };

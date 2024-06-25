@@ -1,4 +1,9 @@
-import { NewPostProps, NewUserProps, UpdatePostProps } from "@/types";
+import {
+  NewPostProps,
+  NewUserProps,
+  UpdatePostProps,
+  UpdateUserProps,
+} from "@/types";
 import {
   account,
   avatars,
@@ -451,6 +456,26 @@ export async function getUserProfileById(userId?: string) {
     return profile;
   } catch (error) {
     console.log("getuserprofilebyiderror", error);
+    throw error;
+  }
+}
+
+// UPDATE USER BY ID //
+export async function updateUserProfile(user: UpdateUserProps) {
+  try {
+    const updatedUser = await databases.updateDocument(
+      DATABASE_ID,
+      USERS_COLLECTION_ID,
+      user.userId,
+      {
+        name: user.name,
+      }
+    );
+
+    if (!updatedUser) throw Error;
+    return updatedUser;
+  } catch (error) {
+    console.log("updateuserprofileerror", error);
     throw error;
   }
 }
