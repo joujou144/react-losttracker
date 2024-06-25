@@ -43,4 +43,5 @@ export type UpdatePostProps = {
 export type UpdateUserProps = {
   userId: string;
   name: string;
+  email: string;
 };

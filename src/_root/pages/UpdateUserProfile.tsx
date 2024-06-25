@@ -38,6 +38,8 @@ const UpdateProfile = () => {
     },
   });
 
+  console.log(user);
+
   const { mutateAsync: updateProfile, isPending: isUpdatingUser } =
     useUpdateUserProfile();
 
@@ -46,6 +48,7 @@ const UpdateProfile = () => {
     const updatedUser = await updateProfile({
       userId: currentUser?.$id || "",
       name: values.name,
+      email: values.email,
     });
     if (!updatedUser) {
       toast({
@@ -57,7 +60,7 @@ const UpdateProfile = () => {
       ...user,
       name: updatedUser?.name,
     });
-    return navigate("/dashboard");
+    return navigate("/");
   };
 
   if (!currentUser) return;

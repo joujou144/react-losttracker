@@ -469,6 +469,7 @@ export async function updateUserProfile(user: UpdateUserProps) {
       user.userId,
       {
         name: user.name,
+        email: user.email,
       }
     );
 
