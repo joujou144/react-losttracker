@@ -123,7 +123,7 @@ const MissingPersonDetails = () => {
                   </Label>
                   <Label label="missing from">{post?.location}</Label>
 
-                  <Label label="category">Missing adults</Label>
+                  <Label label="category">Missing Adults</Label>
                   <Label label="source of record">Family/Friends</Label>
                   <Label label="reported missing">{post?.date}</Label>
 

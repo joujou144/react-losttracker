@@ -33,7 +33,7 @@ const MissingProfileCard = ({ post }: MissingProfileProps) => {
           />
         </Link>
 
-        <div className="px-5 py-3 flex flex-col justify-between h-1/3 relative min-w-[200px]">
+        <div className="px-5 py-2 flex flex-col justify-between h-1/3 relative min-w-[200px]">
           <ul className="flex gap-3 absolute -top-4">
             {badges.map(({ label, variant }) => (
               <li
@@ -50,7 +50,7 @@ const MissingProfileCard = ({ post }: MissingProfileProps) => {
               {post.name}
             </h4>
           </div>
-
+          <p className="font-medium lg:text-[15px]">Missing Adults</p>
           <p className="text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
             Reported missing {post.date}
           </p>
