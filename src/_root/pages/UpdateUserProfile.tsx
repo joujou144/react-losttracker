@@ -38,8 +38,6 @@ const UpdateProfile = () => {
     },
   });
 
-  console.log(user);
-
   const { mutateAsync: updateProfile, isPending: isUpdatingUser } =
     useUpdateUserProfile();
 
@@ -63,7 +61,7 @@ const UpdateProfile = () => {
     return navigate("/");
   };
 
-  if (!currentUser) return;
+  if (!user) return;
 
   return (
     <div className="flex flex-1">
@@ -72,7 +70,7 @@ const UpdateProfile = () => {
           <MdOutlineNoteAdd size={30} />
         </Heading>
 
-        {!currentUser && (
+        {!user && (
           <div className="mt-10">
             <LoadingSpinner />
           </div>
