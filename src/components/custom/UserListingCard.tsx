@@ -49,7 +49,7 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
   };
 
   return (
-    <div className="bg-slate-200 rounded-lg text-dark-200 h-[440px]">
+    <div className="bg-slate-200 rounded-lg text-dark-200 h-[445px]">
       <div className="flex flex-col h-full">
         <Link to={`/missing-people/${listing.$id}`}>
           <img
@@ -59,7 +59,7 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
           />
         </Link>
 
-        <div className="relative px-5 pb-3 pt-5 bg-primary-600 text-surface-mixed-200">
+        <div className="relative px-5 pb-2 pt-4 bg-primary-600 text-surface-mixed-200">
           <div className="flex justify-between items-center">
             <p className="  text-xs md:text-sm overflow-hidden text-ellipsis whitespace-nowrap">
               Updated {formatDateObj(listing.$updatedAt)}
@@ -92,7 +92,7 @@ const UserListingCard = ({ listing, userId, variant }: MissingProfileProps) => {
           </span>
         </div>
 
-        <div className="px-5 py-2 flex flex-col justify-between h-1/3 min-w-[200px]">
+        <div className="px-5 pb-3 pt-2 flex flex-col justify-between h-1/3 min-w-[200px]">
           <h4 className="text-[16px] md:text-[18px] xl:text-[20px] font-medium">
             {listing.name}
           </h4>
