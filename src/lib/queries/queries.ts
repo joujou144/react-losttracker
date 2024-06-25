@@ -15,6 +15,7 @@ import {
   getMissingProfileById,
   getRecentMissingProfiles,
   getUserListings,
+  getUserProfileById,
   getUserSavedPosts,
   saveProfile,
   searchProfile,
@@ -175,6 +176,14 @@ export const useGetUserSavedPosts = (userId: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_USER_SAVED_LISTINGS, userId],
     queryFn: () => getUserSavedPosts(userId),
+    enabled: !!userId,
+  });
+};
+
+export const useGetUserById = (userId: string) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_USER_BY_ID, userId],
+    queryFn: () => getUserProfileById(userId),
     enabled: !!userId,
   });
 };

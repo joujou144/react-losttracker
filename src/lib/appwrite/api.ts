@@ -437,3 +437,20 @@ export async function searchProfile(searchTerm: string) {
     throw error;
   }
 }
+
+// GET USER BY ID //
+export async function getUserProfileById(userId?: string) {
+  if (!userId) throw Error;
+  try {
+    const profile = await databases.getDocument(
+      DATABASE_ID,
+      USERS_COLLECTION_ID,
+      userId
+    );
+    if (!profile) throw Error;
+    return profile;
+  } catch (error) {
+    console.log("getuserprofilebyiderror", error);
+    throw error;
+  }
+}

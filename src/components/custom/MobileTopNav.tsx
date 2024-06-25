@@ -31,13 +31,13 @@ const MobileTopNav = () => {
         <div className="flex gap-2">
           <Button
             variant="ghost"
-            className="hover:text-amaranth
+            className="hover:text-primary-200
             "
             onClick={() => signOut()}
           >
             <MdLogout size={22} className="px-0" />
           </Button>
-          <Link to={`/profile/${user.id}`} className="">
+          <Link to={`/update-profile/${user.id}`} className="">
             <Avatar>
               <AvatarImage />
               <AvatarFallback className="text-surface-mixed-100 bg-primary-600  font-medium">
