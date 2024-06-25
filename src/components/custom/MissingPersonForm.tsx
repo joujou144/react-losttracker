@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Models } from "appwrite";
 import { format } from "date-fns";
-import { CalendarIcon, ChevronDown, Link } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
@@ -23,7 +23,6 @@ import { Button } from "../ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -33,15 +32,6 @@ import { Input } from "../ui/input";
 import { useToast } from "../ui/use-toast";
 import FileUploader from "./FileUploader";
 import LoadingSpinner from "./LoadingSpinner";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@radix-ui/react-select";
-import { useState } from "react";
-import { FiChevronDown } from "react-icons/fi";
 
 type FormData = z.infer<typeof missingProfileFormSchema>;
 
@@ -68,7 +58,6 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
       location: post ? post?.location : "",
       date: post ? new Date(post?.date) : new Date(),
       file: [],
-      category: post ? post?.category : "",
     },
   });
 
@@ -112,19 +101,6 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
     }
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleSelect = (event: React.MouseEvent<HTMLLIElement>) => {
-    const value = event.currentTarget.getAttribute("value");
-    if (value) {
-      form.setValue("category", value);
-    }
-    setIsOpen(false);
-  };
-
   return (
     <Form {...form}>
       <form
@@ -132,56 +108,6 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
         className="flex flex-col gap-8 w-full"
       >
         <FormField
-          control={form.control}
-          name="category"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                <div
-                  className="flex justify-between items-center cursor-pointer"
-                  onClick={toggleDropdown}
-                >
-                  Select Category
-                  <FiChevronDown
-                    className={`ml-2 transition-transform ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-              </FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <div
-                    className="w-full p-2 border rounded-md border-gray-300 cursor-pointer"
-                    onClick={toggleDropdown}
-                  >
-                    {field.value || "Select category"}
-                  </div>
-                  {isOpen && (
-                    <ul className="absolute w-full bg-white border border-gray-300 rounded-md mt-1 z-10">
-                      <li
-                        className="p-2 hover:bg-gray-100 cursor-pointer"
-                        value="Adult"
-                        onClick={handleSelect}
-                      >
-                        Adult
-                      </li>
-                      <li
-                        className="p-2 hover:bg-gray-100 cursor-pointer"
-                        value="Children"
-                        onClick={handleSelect}
-                      >
-                        Children
-                      </li>
-                    </ul>
-                  )}
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        {/* <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
@@ -194,6 +120,7 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="description"
@@ -247,7 +174,6 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
           )}
         />
 
-  
         <FormField
           control={form.control}
           name="date"
@@ -288,9 +214,9 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
               <FormMessage />
             </FormItem>
           )}
-        /> */}
+        />
 
-        {/* <div className="flex gap-4 items-center justify-end">
+        <div className="flex gap-4 items-center justify-end">
           <Button
             type="button"
             className="shad-button-cancel"
@@ -307,7 +233,7 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
             {action === "Create" && "Submit"}
             {action === "Update" && "Update"}
           </Button>
-        </div> */}
+        </div>
       </form>
     </Form>
   );
