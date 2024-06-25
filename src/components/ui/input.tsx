@@ -11,7 +11,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          "flex h-10 w-full rounded-md bg-gray-70 px-3 py-2 text-sm text-warm-gray ring-offset-0 file:border-0 file:bg-transparent file:text-sm file:font-light placeholder:text-gray-20 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-10 w-full rounded-md px-3 py-2 text-sm text-warm-gray ring-offset-0 file:border-0 file:bg-transparent file:text-sm file:font-light placeholder:text-gray-20 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         // autoComplete="off"

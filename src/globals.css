@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-dark-100 text-primary-600 min-h-screen font-assistant font-light tracking-wider max-[600px]:text-xxs;
+    @apply relative bg-dark-100 text-primary-600 min-h-screen font-assistant font-light tracking-wider max-[600px]:text-xxs;
   }
 }
 
@@ -108,7 +108,7 @@
 
   /* Mobile Bottom Navigation */
   .mobile-bottom-nav {
-    @apply z-50 flex-between w-full static bg-surface-mixed-100 bottom-0 px-5 py-3 md:hidden;
+    @apply z-50 flex-between w-full sticky bg-surface-mixed-100 bottom-0 px-5 py-3 md:hidden;
   }
 
   /* Sidebar Navigation */
@@ -138,11 +138,11 @@
   }
 
   .shad-input {
-    @apply border-none bg-surface-mixed-100 placeholder:text-surface-mixed-400 rounded-lg focus-visible:ring-0 focus-visible:ring-offset-1 ring-offset-gray-30 !important;
+    @apply border-none bg-dark-200 placeholder:text-surface-mixed-400 rounded-lg focus-visible:ring-0 focus-visible:ring-offset-1 ring-offset-gray-30 !important;
   }
 
   .shad-textarea {
-    @apply h-40 resize-none text-primary-700 bg-surface-mixed-100 rounded-lg border-none focus-visible:ring-0 focus-visible:ring-offset-1 placeholder:text-gray-30 ring-offset-gray-30 !important;
+    @apply h-40 resize-none text-primary-700 bg-dark-200 rounded-lg border-none focus-visible:ring-0 focus-visible:ring-offset-1 placeholder:text-gray-30 ring-offset-gray-30 !important;
   }
 
   /* Button */

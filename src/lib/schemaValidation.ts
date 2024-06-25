@@ -19,4 +19,5 @@ export const missingProfileFormSchema = z.object({
   date: z.date({
     required_error: "A date of last seen is required.",
   }),
+  category: z.string(),
 });
