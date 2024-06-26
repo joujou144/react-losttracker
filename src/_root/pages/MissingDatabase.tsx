@@ -129,6 +129,12 @@ const MissingDatabase = () => {
 };
 
 const LocalMissingMap = ({ combinedData }: CombinedDataProps) => {
+  if (!combinedData)
+    return (
+      <div className="mt-6 flex flex-col items-center">
+        <LoadingSpinner />
+      </div>
+    );
   return (
     <>
       <Heading title="Local Missing Map" />
