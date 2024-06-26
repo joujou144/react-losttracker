@@ -54,7 +54,7 @@ const MissingDatabase = () => {
   return (
     <div className="flex flex-1">
       <div className="main-container">
-        <div className="2xl:w-[60%] self-start">
+        <div className="2xl:w-[60%] self-start flex flex-1 flex-col gap-6 ">
           <Heading title="Search All Missing Persons" />
 
           <h3 className="px-5 py-4 bg-surface-mixed-300 rounded-lg">
