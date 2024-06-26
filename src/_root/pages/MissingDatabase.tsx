@@ -18,6 +18,8 @@ import { markers } from "@/lib/markers";
 const MissingDatabase = () => {
   const [searchValue, setSearchValue] = useState("");
   const [combinedData, setCombinedData] = useState<CombinedProfile[]>([]);
+
+  // TODO: Consider doing a normal search instead of Infinite query due to typescript error on getNextPageParams
   const {
     data: { pages: posts = [] } = {},
     hasNextPage,

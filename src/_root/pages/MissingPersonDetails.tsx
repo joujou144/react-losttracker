@@ -128,7 +128,7 @@ const MissingPersonDetails = () => {
                     <Label label="source of record">Family/Friends</Label>
                     <Label label="reported missing">{post?.date}</Label>
 
-                    {/* Physical details */}
+                    {/* Physical details currently hardcoded as Appwrite allows a limited number of attributes */}
                     <div className="border-white border-y-4 flex flex-col gap-4 flex-1 lg:flex-row justify-between py-4">
                       <Label label="Sex">Female</Label>
                       <Label label="Ethinicity">Caucasian</Label>
