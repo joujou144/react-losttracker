@@ -3,13 +3,19 @@ import {
   LoadingSpinner,
   MissingProfileCard,
 } from "@/components/custom";
+import {
+  MapContainer,
+  TileLayer,
+  // useMap,
+} from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import { Input } from "@/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
-// import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useGetPosts, useSearchProfile } from "@/lib/queries/queries";
 import React, { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import { useInView } from "react-intersection-observer";
+// import { Marker, Popup } from "leaflet";
 
 const MissingDatabase = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -54,7 +60,7 @@ const MissingDatabase = () => {
   return (
     <div className="flex flex-1">
       <div className="main-container">
-        <div className="2xl:w-[60%] self-start flex flex-1 flex-col gap-6 ">
+        <div className="2xl:w-[60%] self-start flex flex-1 flex-col gap-6">
           <Heading title="Search All Missing Persons" />
 
           <h3 className="px-5 py-4 bg-surface-mixed-300 rounded-lg">
@@ -65,6 +71,24 @@ const MissingDatabase = () => {
             resource in raising awareness and facilitating the search for
             missing individuals.
           </h3>
+
+          <MapContainer
+            center={[51.505, -0.09]}
+            zoom={10}
+            scrollWheelZoom={false}
+            className="h-[450px] rounded-lg"
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {/* <Marker position={[51.505, -0.09]}>
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker> */}
+          </MapContainer>
+
           <div className="flex items-center gap-1 px-4 w-full rounded-lg bg-dark-200 ">
             <LuSearch size={20} />
             <Input

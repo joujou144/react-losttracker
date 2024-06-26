@@ -68,12 +68,10 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
         postId: post.$id,
         imageId: post?.imageId,
         imageUrl: post?.imageUrl,
-        location: post?.location,
-        date: new Date(post.date),
       });
 
       if (!updatedPost) {
-        toast({ title: "Please try again." });
+        toast({ title: `${action} missing person. Please try again.` });
       }
       return navigate(`/missing-people/${post.$id}`);
     }
@@ -86,7 +84,7 @@ const MissingPersonForm = ({ post, action }: MissingPersonFormProps) => {
 
     if (!newPost) {
       toast({
-        title: "Please try again.",
+        title: `${action} missing person. Please try again.`,
       });
     }
 
