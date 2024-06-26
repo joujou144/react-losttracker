@@ -4,6 +4,8 @@ import {
   UpdatePostProps,
   UpdateUserProps,
 } from "@/types";
+import { ID, ImageGravity, Query } from "appwrite";
+import { formatDateObj } from "../helpers/formatDate";
 import {
   account,
   avatars,
@@ -15,8 +17,6 @@ import {
   STORAGE_ID,
   USERS_COLLECTION_ID,
 } from "./config";
-import { ID, ImageGravity, Query } from "appwrite";
-import { formatDateObj } from "../helpers/formatDate";
 
 // AUTH SIGN UP //
 export async function createUserAccount(user: NewUserProps) {
@@ -403,7 +403,6 @@ export async function getInfinitePosts({
   pageParam: number | undefined;
 }) {
   const queries = [Query.orderDesc("$updatedAt"), Query.limit(9)];
-
   if (pageParam) {
     queries.push(Query.cursorAfter(pageParam.toString()));
   }

@@ -46,7 +46,7 @@ const MissingDatabase = () => {
   };
 
   useEffect(() => {
-    const listProfiles: Models.Document[] = posts?.flatMap(
+    const listProfiles: Models.Document[] = posts.flatMap(
       (page) => page.documents
     );
 
@@ -164,7 +164,7 @@ const LocalMissingMap = ({ combinedData }: CombinedDataProps) => {
         />
         {combinedData &&
           combinedData.map(({ geocode, name, imageUrl, date }) => (
-            <Marker position={geocode}>
+            <Marker position={geocode} key={name}>
               <Popup>
                 <div className=" w-[200px] flex gap-2 items center ">
                   <img src={imageUrl} className="w-[80px] rounded-full" />
