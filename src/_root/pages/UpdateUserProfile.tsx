@@ -42,7 +42,6 @@ const UpdateProfile = () => {
     useUpdateUserProfile();
 
   const handleUpdate = async (values: FormData) => {
-    console.log(values);
     const updatedUser = await updateProfile({
       userId: currentUser?.$id || "",
       name: values.name,

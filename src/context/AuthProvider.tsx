@@ -44,7 +44,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
       return false;
     } catch (error) {
-      console.log("checkauthusererror", error);
       return false;
     } finally {
       setIsLoading(false);

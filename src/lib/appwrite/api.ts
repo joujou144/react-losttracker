@@ -38,8 +38,7 @@ export async function createUserAccount(user: NewUserProps) {
     });
     return newUser;
   } catch (error) {
-    console.log("createuseraccounterror", error);
-    throw error;
+    return error;
   }
 }
 
@@ -59,7 +58,6 @@ export async function saveUserToDB(user: {
     );
     return newUser;
   } catch (error) {
-    console.log("saveusertodberror", error);
     return error;
   }
 }
@@ -74,7 +72,7 @@ export async function signInAccount(user: { email: string; password: string }) {
 
     return session;
   } catch (error) {
-    console.log("signinaccounterror", error);
+    return error;
   }
 }
 
@@ -102,7 +100,6 @@ export async function getCurrentUser() {
       name: userDocuments.name,
     };
   } catch (error) {
-    console.log("getcurrentUsererror", error);
     return null;
   }
 }
@@ -125,7 +122,6 @@ export async function getCurrentAccount() {
     const userDocuments = currentUser.documents[0];
     return userDocuments;
   } catch (error) {
-    console.log("getcurrentaccounterror", error);
     return null;
   }
 }
@@ -136,7 +132,7 @@ export async function signOutAccount() {
     const session = account.deleteSession("current");
     return session;
   } catch (error) {
-    console.log("signouterror", error);
+    return error;
   }
 }
 
@@ -179,7 +175,7 @@ export async function createMissingPersonProfile(post: NewPostProps) {
     }
     return newPost;
   } catch (error) {
-    console.log("createmissingpersonerror", error);
+    return error;
   }
 }
 
