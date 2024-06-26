@@ -1,3 +1,5 @@
+import { LatLngTuple } from "leaflet";
+
 export type ContextProps = {
   user: ExistingUserProps;
   isLoading: boolean;
@@ -44,4 +46,18 @@ export type UpdateUserProps = {
   userId: string;
   name: string;
   email: string;
+};
+
+type ListProfile = {
+  name: string;
+  imageUrl: string;
+  date: string;
+};
+
+export type CombinedProfile = ListProfile & {
+  geocode: LatLngTuple;
+};
+
+export type CombinedDataProps = {
+  combinedData: CombinedProfile[];
 };
