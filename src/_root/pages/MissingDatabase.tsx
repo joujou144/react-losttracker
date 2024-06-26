@@ -46,7 +46,7 @@ const MissingDatabase = () => {
   };
 
   useEffect(() => {
-    const listProfiles: Models.Document[] = posts.flatMap(
+    const listProfiles: Models.Document[] = posts?.flatMap(
       (page) => page.documents
     );
 

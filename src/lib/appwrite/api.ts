@@ -38,7 +38,8 @@ export async function createUserAccount(user: NewUserProps) {
     });
     return newUser;
   } catch (error) {
-    return error;
+    console.log("create user account error:", error);
+    throw error;
   }
 }
 
@@ -58,7 +59,7 @@ export async function saveUserToDB(user: {
     );
     return newUser;
   } catch (error) {
-    return error;
+    console.log("saveusetodb error:", error);
   }
 }
 
@@ -72,7 +73,7 @@ export async function signInAccount(user: { email: string; password: string }) {
 
     return session;
   } catch (error) {
-    return error;
+    console.log("sign in error:", error);
   }
 }
 
@@ -100,6 +101,7 @@ export async function getCurrentUser() {
       name: userDocuments.name,
     };
   } catch (error) {
+    console.log("getcurrentuser error:", error);
     return null;
   }
 }
@@ -175,7 +177,7 @@ export async function createMissingPersonProfile(post: NewPostProps) {
     }
     return newPost;
   } catch (error) {
-    return error;
+    console.log("createmissingprofile error:", error);
   }
 }
 
