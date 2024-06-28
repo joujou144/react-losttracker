@@ -1,4 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
+import hero from "/assets/hero.jpg";
+import logo from "/assets/Logo-light-blur.svg";
 
 const AuthLayout = () => {
   const isAuthenticated = false;
@@ -12,7 +14,7 @@ const AuthLayout = () => {
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center h-svh lg:h-screen">
             <div className="p-6 w-[435px] lg:w-[490px]">
               <img
-                src="/assets/Logo-light-blur.svg"
+                src={logo}
                 alt="losttracker-logo"
                 className="block lg:hidden mb-6 h-auto w-auto"
               />
@@ -32,13 +34,13 @@ const SideBackground = () => {
     <div className="hidden lg:block lg:order-first relative w-1/2 h-svh lg:h-screen">
       <div className="z-10 absolute inset-0 bg-gray-200 opacity-70 " />
       <img
-        src="/assets/hero.jpg"
+        src={hero}
         alt="losttracker-bg-image"
-        className="h-full object-cover bg-no-repeat w-full"
+        className="h-full object-cover bg-no-repeat w-full bg-center"
       />
 
       <img
-        src="/assets/Logo-light-blur.svg"
+        src={logo}
         alt="losttracker-logo"
         className="z-30 absolute top-24 left-20 w-[200px] h-auto"
       />

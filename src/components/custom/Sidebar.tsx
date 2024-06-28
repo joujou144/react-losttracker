@@ -14,6 +14,8 @@ import { getAcronym } from "@/lib/helpers/user";
 import { startCase } from "lodash";
 import { sidebarLinks } from "@/constants";
 import { Button } from "../ui/button";
+import logo from "/assets/Logo-light-blur.svg";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Sidebar = () => {
   const { mutate: signOut, isSuccess } = usePostSignOut();
@@ -36,26 +38,26 @@ const Sidebar = () => {
     <nav className="sidebar">
       <div className="flex flex-col gap-10">
         <Link to="/">
-          <img
-            src="/assets/Logo-light-blur.svg"
-            alt="logo"
-            width={145}
-            height="auto"
-          />
+          <img src={logo} alt="losttracker-logo" width={145} height="auto" />
         </Link>
-        <Link
-          to={`/update-profile/${user.id}`}
-          className="flex gap-3 items-center"
-        >
-          <Avatar>
-            <AvatarImage />
-            <AvatarFallback className="text-surface-mixed-100 bg-primary-600 font-medium">
-              {getAcronym(user.name)}
-            </AvatarFallback>
-          </Avatar>
+        {!user ? (
+          <LoadingSpinner />
+        ) : (
+          <Link
+            to={`/update-profile/${user.id}`}
+            className="flex gap-3 items-center"
+          >
+            <Avatar>
+              <AvatarImage />
+              <AvatarFallback className="text-surface-mixed-100 bg-primary-600 font-medium">
+                {getAcronym(user.name)}
+              </AvatarFallback>
+            </Avatar>
 
-          {startCase(user.name)}
-        </Link>
+            {startCase(user.name)}
+          </Link>
+        )}
+
         <ul className="flex flex-col gap-6">
           {sidebarLinks.map(({ icon: Icon, route, label }) => {
             const activeLink = isActive(route);

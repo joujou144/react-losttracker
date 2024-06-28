@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { useUserContext } from "@/context/useUserContext";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getAcronym } from "@/lib/helpers/user";
+import logo from "/assets/Logo-light-blur.svg";
+import LoadingSpinner from "./LoadingSpinner";
 
 const MobileTopNav = () => {
   const { mutate: signOut, isSuccess } = usePostSignOut();
@@ -21,12 +23,7 @@ const MobileTopNav = () => {
     <section className="mobile-nav">
       <div className="flex flex-between items-center py-4 px-5">
         <Link to="/">
-          <img
-            src="/assets/Logo-light-blur.svg"
-            alt="logo"
-            width={130}
-            height="auto"
-          />
+          <img src={logo} alt="losttracker-logo" width={130} height="auto" />
         </Link>
         <div className="flex gap-2">
           <Button
@@ -37,14 +34,19 @@ const MobileTopNav = () => {
           >
             <MdLogout size={22} className="px-0" />
           </Button>
-          <Link to={`/update-profile/${user.id}`} className="">
-            <Avatar>
-              <AvatarImage />
-              <AvatarFallback className="text-surface-mixed-100 bg-primary-600  font-medium">
-                {getAcronym(user.name)}
-              </AvatarFallback>
-            </Avatar>
-          </Link>
+
+          {!user ? (
+            <LoadingSpinner />
+          ) : (
+            <Link to={`/update-profile/${user.id}`} className="">
+              <Avatar>
+                <AvatarImage />
+                <AvatarFallback className="text-surface-mixed-100 bg-primary-600  font-medium">
+                  {getAcronym(user.name)}
+                </AvatarFallback>
+              </Avatar>
+            </Link>
+          )}
         </div>
       </div>
     </section>
