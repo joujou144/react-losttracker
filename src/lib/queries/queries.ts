@@ -31,14 +31,16 @@ import {
 } from "../appwrite/api";
 import { QUERY_KEYS } from "./queryKeys";
 
-// AUTH QUERIES //
+// ------ AUTH QUERIES ------ //
 
+// SIGN UP //
 export const usePostSignUp = () => {
   return useMutation({
     mutationFn: (user: NewUserProps) => createUserAccount(user),
   });
 };
 
+// LOGIN //
 export const usePostSignIn = () => {
   return useMutation({
     mutationFn: (user: { email: string; password: string }) =>
@@ -46,12 +48,14 @@ export const usePostSignIn = () => {
   });
 };
 
+// SIGN OUT //
 export const usePostSignOut = () => {
   return useMutation({
     mutationFn: signOutAccount,
   });
 };
 
+// GET CURRENT USER //
 export const useGetCurrentUser = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_CURRENT_USER],
@@ -59,6 +63,7 @@ export const useGetCurrentUser = () => {
   });
 };
 
+// GET CURRENT ACCOUNT //
 export const useGetCurrentAccount = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_CURRENT_USER],
@@ -66,8 +71,9 @@ export const useGetCurrentAccount = () => {
   });
 };
 
-// POST QUERIES //
+// ------ POST QUERIES ------ //
 
+// POST A MISSING PERSON //
 export const usePostMissingPerson = () => {
   const queryClient = useQueryClient();
   return useMutation({
@@ -80,6 +86,7 @@ export const usePostMissingPerson = () => {
   });
 };
 
+// GET RECENT MISSING PROFILES //
 export const useGetRecentMissingProfiles = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_RECENT_MISSING_PROFILES],
@@ -87,6 +94,7 @@ export const useGetRecentMissingProfiles = () => {
   });
 };
 
+// GET USER'S LISTINGS //
 export const useGetUserListings = (userId?: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_USER_MISSING_LISTINGS, userId],
@@ -95,6 +103,7 @@ export const useGetUserListings = (userId?: string) => {
   });
 };
 
+// SAVE/BOOKMARK A PROFILE //
 export const useSaveProfile = () => {
   const queryClient = useQueryClient();
 
@@ -115,6 +124,7 @@ export const useSaveProfile = () => {
   });
 };
 
+// UNSAVE/UNBOOKMARK A PROFILE //
 export const useDeleteSavedProfile = () => {
   const queryClient = useQueryClient();
 
@@ -134,6 +144,7 @@ export const useDeleteSavedProfile = () => {
   });
 };
 
+// GET A MISSING PERSON BY ID //
 export const useGetMissingPersonById = (postId: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_MISSING_PROFILE_BY_ID, postId],
@@ -142,6 +153,7 @@ export const useGetMissingPersonById = (postId: string) => {
   });
 };
 
+// UPDATE A MISSING PERSON BY ID //
 export const useUpdateMissingPerson = () => {
   const queryClient = useQueryClient();
   return useMutation({
@@ -154,21 +166,7 @@ export const useUpdateMissingPerson = () => {
   });
 };
 
-// export const useGetInfinitePosts = () => {
-//   return useInfiniteQuery({
-//     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
-//     queryFn: getAllPosts,
-//     getNextPageParam: (lastPage, allPages) => {
-//       // If there's no data, there are no more pages.
-//       if (lastPage && lastPage.documents.length) {
-//         return allPages.length + 1;
-//       }
-//       // Use the $id of the last document as the cursor.
-//       return undefined;
-//     },
-//   });
-// };
-
+// GET ALL/INFINITE POSTS //
 export const useGetInfinitePosts = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
@@ -181,12 +179,11 @@ export const useGetInfinitePosts = () => {
         return allPages.length + 1;
       }
       return undefined;
-      // const lastId = lastPage.documents[lastPage.documents.length -1].$id
-      // return lastId;
     },
   });
 };
 
+// SEARCH A PROFILE //
 export const useSearchProfile = (searchTerm: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.SEARCH_MISSING_PROFILES, searchTerm],
@@ -195,6 +192,7 @@ export const useSearchProfile = (searchTerm: string) => {
   });
 };
 
+// GET USER'S BOOKMARKED PROFILES //
 export const useGetUserSavedPosts = (userId: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_USER_SAVED_LISTINGS, userId],
@@ -203,6 +201,7 @@ export const useGetUserSavedPosts = (userId: string) => {
   });
 };
 
+// GET USER BY ID //
 export const useGetUserById = (userId: string) => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_USER_BY_ID, userId],
@@ -211,6 +210,7 @@ export const useGetUserById = (userId: string) => {
   });
 };
 
+// UPDATE USER'S DETAILS //
 export const useUpdateUserProfile = () => {
   const queryClient = useQueryClient();
   return useMutation({
