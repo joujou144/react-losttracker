@@ -62,13 +62,27 @@ Click the bookmark icon on a profile to save it for later viewing.
 Fill out the form to post a new missing person profile with relevant details and a photo.
 
 ## Configuration
-You need to configure environment variables to connect to the Appwrite backend. Create a `.env` file in the root of your project and add the following variables:
+
+1. Create an Appwrite project
+
+If you haven't already, sign up for an Appwrite account and create a new project. Note down your project ID.
+
+2. Create a Database and Collection
+
+Within your Appwrite project, create a database and a collection for storing the missing persons' profiles. Note down your database ID and collection ID.
+
+3. Configure environment variables to connect to the Appwrite backend.
+  
+Create a `.env` file in the root of your project and add the following variables:
 
 ```
-VITE_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
-VITE_APPWRITE_PROJECT=<YOUR_PROJECT_ID>
-VITE_APPWRITE_DATABASE_ID=<YOUR_DATABASE_ID>
-VITE_APPWRITE_COLLECTION_ID=<YOUR_COLLECTION_ID>
+VITE_API_ENDPOINT = 'https://cloud.appwrite.io/v1'
+VITE_RPOJECT_ID = <YOUR_PROJECT_ID>
+VITE_STORAGE_ID ='6661d4a0002a114b5be4'
+VITE_DATABASE_ID = "6661d4f8000fd86b59ca"
+VITE_SAVES_COLLECTION_ID = "6668360d00196b61135e"
+VITE_USERS_COLLECTION_ID = "6662278f002906cf0b66"
+VITE_MISSING_PERSONS_COLLECTION_ID = "666227380039aa754aee"
 ```
 Replace `<YOUR_PROJECT_ID>`, `<YOUR_DATABASE_ID>`, and `<YOUR_COLLECTION_ID>` with your actual Appwrite project details.
 
