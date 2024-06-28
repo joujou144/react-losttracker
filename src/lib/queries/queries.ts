@@ -14,9 +14,9 @@ import {
   createMissingPersonProfile,
   createUserAccount,
   deleteSavedProfile,
+  getAllPosts,
   getCurrentAccount,
   getCurrentUser,
-  getInfinitePosts,
   getMissingProfileById,
   getRecentMissingProfiles,
   getUserListings,
@@ -154,18 +154,35 @@ export const useUpdateMissingPerson = () => {
   });
 };
 
-export const useGetPosts = () => {
+// export const useGetInfinitePosts = () => {
+//   return useInfiniteQuery({
+//     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
+//     queryFn: getAllPosts,
+//     getNextPageParam: (lastPage, allPages) => {
+//       // If there's no data, there are no more pages.
+//       if (lastPage && lastPage.documents.length) {
+//         return allPages.length + 1;
+//       }
+//       // Use the $id of the last document as the cursor.
+//       return undefined;
+//     },
+//   });
+// };
+
+export const useGetInfinitePosts = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
-    queryFn: getInfinitePosts,
-    getNextPageParam: (lastPage) => {
+    queryFn: getAllPosts,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
       // If there's no data, there are no more pages.
-      if (lastPage && lastPage?.documents.length === 0) {
-        return null;
+
+      if (lastPage && lastPage.documents.length) {
+        return allPages.length + 1;
       }
-      // Use the $id of the last document as the cursor.
-      const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;
-      return lastId;
+      return undefined;
+      // const lastId = lastPage.documents[lastPage.documents.length -1].$id
+      // return lastId;
     },
   });
 };

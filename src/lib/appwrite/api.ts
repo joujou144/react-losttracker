@@ -229,7 +229,7 @@ export async function deleteFile(fileId: string) {
 
 // GET LATEST PROFILES //
 export async function getRecentMissingProfiles() {
-  const queries = [Query.orderDesc("$updatedAt"), Query.limit(3)];
+  const queries = [Query.orderDesc("$createdAt"), Query.limit(3)];
   try {
     const profiles = await databases.listDocuments(
       DATABASE_ID,
@@ -397,14 +397,12 @@ export async function updateMissingPerson(post: UpdatePostProps) {
 }
 
 // GET INIFNITE POSTS //
-export async function getInfinitePosts({
-  pageParam,
-}: {
-  pageParam: number | undefined;
-}) {
-  const queries = [Query.orderDesc("$updatedAt"), Query.limit(9)];
+export async function getAllPosts({ pageParam }: { pageParam: number }) {
+  const pageSize = 9;
+  const queries = [Query.orderDesc("$createdAt"), Query.limit(pageSize)];
+
   if (pageParam) {
-    queries.push(Query.cursorAfter(pageParam.toString()));
+    queries.push(Query.offset((pageParam - 1) * pageSize));
   }
 
   try {

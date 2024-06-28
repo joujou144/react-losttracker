@@ -7,7 +7,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Input } from "@/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
-import { useGetPosts, useSearchProfile } from "@/lib/queries/queries";
+import { useGetInfinitePosts, useSearchProfile } from "@/lib/queries/queries";
 import React, { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import { useInView } from "react-intersection-observer";
@@ -27,7 +27,7 @@ const MissingDatabase = () => {
     isFetchingNextPage,
     isError: isPostsError,
     isLoading,
-  } = useGetPosts();
+  } = useGetInfinitePosts();
 
   const { ref, inView } = useInView();
   const debouncedValue = useDebounce(searchValue, 500);
@@ -65,6 +65,7 @@ const MissingDatabase = () => {
   useEffect(() => {
     if (inView && !searchValue) fetchNextPage();
   }, [inView]);
+
   if (isPostsError) {
     return (
       <div className="mt-20 flex flex-col items-center justify-center align-middle max-w-screen mx-auto">
@@ -101,20 +102,24 @@ const MissingDatabase = () => {
             </div>
           )}
 
-          {!isLoading && (
+          {!isLoading && filteredPosts.length > 0 ? (
             <ul className="grid gap-4 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4">
-              {filteredPosts.length > 0 ? (
-                filteredPosts.map((profile) => (
-                  <li key={profile.$id} className="w-full">
-                    <MissingProfileCard post={profile} />
-                  </li>
-                ))
-              ) : (
-                <p className="text-center">
-                  {debouncedValue ? "No results found" : "No data available"}
-                </p>
-              )}
+              {filteredPosts.map((profile) => (
+                <li key={profile.$id} className="w-full">
+                  <MissingProfileCard post={profile} />
+                </li>
+              ))}
             </ul>
+          ) : (
+            <p className="text-center">
+              {debouncedValue ? (
+                <div className="grid place-items-center mt-6">
+                  <LoadingSpinner />
+                </div>
+              ) : (
+                "No data available"
+              )}
+            </p>
           )}
 
           {isFetchingNextPage && hasNextPage && !searchValue ? (
