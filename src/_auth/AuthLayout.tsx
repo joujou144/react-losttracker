@@ -14,7 +14,7 @@ const AuthLayout = () => {
               <img
                 src="/assets/Logo-light-blur.svg"
                 alt="losttracker-logo"
-                className="block lg:hidden mb-6 h-auto"
+                className="block lg:hidden mb-6 h-auto w-auto"
               />
               <Outlet />
             </div>
@@ -34,16 +34,15 @@ const SideBackground = () => {
       <img
         src="/assets/hero.jpg"
         alt="losttracker-bg-image"
-        className="h-full object-cover bg-no-repeat"
+        className="h-full object-cover bg-no-repeat w-full"
       />
 
       <img
         src="/assets/Logo-light-blur.svg"
         alt="losttracker-logo"
-        className="z-30 absolute top-24 left-20"
+        className="z-30 absolute top-24 left-20 w-[200px] h-auto"
       />
-
-      <h1 className="z-30 text-primary-700 banner-text absolute left-20 bottom-24 max-w-xs md:max-w-md">
+      <h1 className="z-30 text-primary-700 banner-text absolute left-20 bottom-24 max-w-xs md:max-w-md lg:max-w-lg">
         Search. Hope. <br />
         Find Them Alive.
       </h1>

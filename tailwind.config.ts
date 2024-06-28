@@ -48,20 +48,10 @@ module.exports = {
         "surface-mixed-600": "#929395",
 
         midnight: "#090911",
-        // cream: "#FAF0E6",
         highlight: "#3291ff",
-        cream: "#FDF5E6",
-        crimson: "#950720",
         grapefruit: "#DA4453",
         amaranth: "#E52B50",
-        "dark-1": "#000000",
-        "dark-2": "#09090A",
-        "dark-3": "#101012",
-        "dark-4": "#1F1F22",
-        "light-1": "#FFFFFF",
-        "light-2": "#EFEFEF",
-        "light-3": "#7878A3",
-        "light-4": "#5C5C7B",
+
         "warm-gray": "#cfc6c1",
         gray: {
           10: "#EEEEEE",
@@ -73,7 +63,6 @@ module.exports = {
           200: "#121214",
         },
       },
-
       fontFamily: {
         allerta: ["Allerta Stencil", "sans-serif"],
         assistant: ["Assistant", "sans-serif"],
