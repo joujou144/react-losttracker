@@ -13,7 +13,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { userLoginFormSchema } from "@/lib/schemaValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link as ReactLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { z } from "zod";
 
 import { useUserContext } from "@/context/useUserContext";
@@ -60,22 +61,15 @@ const Login = () => {
   return (
     <>
       <h2 className="h2-bold text-primary-600">Welcome back</h2>
-      <div className="pt-6 pb-2 flex items-center gap-1.5 text-sm">
-        <p className="text-gray-20">Don't have an account?</p>
-
-        <ReactLink to="/sign-up" className="underline">
-          Sign Up
-        </ReactLink>
+      <div className="pt-6 pb-2 text-sm">
+        <p className="text-gray-20">
+          If you want to profile a missing loved one in our database and already
+          have filed a verifiable police report with local authorities, please{" "}
+          <Link to="/sign-up" className="underline text-primary-600">
+            sign up.
+          </Link>
+        </p>
       </div>
-
-      {/* TODO: Might move this to another page */}
-      {/* <p>
-        If you want to profile a missing loved one in our database and already
-        have filed a verifiable police report with local authorities, please
-        <ReactLink to="/sign-up" className="underline">
-          sign up and create an account.
-        </ReactLink>
-      </p> */}
 
       {/* Login Form */}
       <Form {...form}>

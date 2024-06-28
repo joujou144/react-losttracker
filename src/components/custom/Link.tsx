@@ -11,7 +11,7 @@ const Link = ({ to, children, className }: Props) => {
   return (
     <ReactLink
       to={to}
-      className={`text-warm-gray inline-flex items-center gap-0.5 hover:text-highlight transition-colors ${className}`}
+      className={`inline-flex items-center gap-0.5 hover:text-primary-100 transition-colors ${className}`}
     >
       {children}
     </ReactLink>
