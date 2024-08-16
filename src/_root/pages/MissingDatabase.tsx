@@ -5,6 +5,7 @@ import {
 } from "@/components/custom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import * as L from "leaflet";
 import { Input } from "@/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
 import { useGetInfinitePosts, useSearchProfile } from "@/lib/queries/queries";
@@ -14,6 +15,7 @@ import { useInView } from "react-intersection-observer";
 import { Models } from "appwrite";
 import { CombinedDataProps, CombinedProfile } from "@/types";
 import { markers } from "@/lib/markers";
+import icon from "/assets/person-svgrepo-com.svg";
 
 const MissingDatabase = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -136,6 +138,12 @@ const MissingDatabase = () => {
 };
 
 const LocalMissingMap = ({ combinedData }: CombinedDataProps) => {
+  const iconPerson = new L.Icon({
+    iconUrl: icon,
+    iconRetinaUrl: icon,
+    popupAnchor: [-0, -0],
+    iconSize: [32, 45],
+  });
   if (!combinedData)
     return (
       <div className="mt-6 flex flex-col items-center">
@@ -169,22 +177,21 @@ const LocalMissingMap = ({ combinedData }: CombinedDataProps) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {combinedData &&
-          combinedData.map(({ geocode, name, imageUrl, date }) => (
-            <Marker position={geocode} key={name}>
-              <Popup>
-                <div className=" w-[200px] flex gap-2 items center ">
-                  <img src={imageUrl} className="w-[80px] rounded-full" />
-                  <div className="text-xxs">
-                    <p className="font-medium">{name}</p>
-                    <p>
-                      Missing since <span className="font-medium">{date}</span>
-                    </p>
-                  </div>
+        {combinedData.map(({ geocode, name, imageUrl, date }) => (
+          <Marker position={geocode} key={name} icon={iconPerson}>
+            <Popup>
+              <div className=" w-[200px] flex gap-2 items center ">
+                <img src={imageUrl} className="w-[80px] rounded-full" />
+                <div className="text-xxs">
+                  <p className="font-medium">{name}</p>
+                  <p>
+                    Missing since <span className="font-medium">{date}</span>
+                  </p>
                 </div>
-              </Popup>
-            </Marker>
-          ))}
+              </div>
+            </Popup>
+          </Marker>
+        ))}
       </MapContainer>
     </>
   );
